@@ -4,3 +4,4 @@ django_heroku==0.3.1
 Pygments==2.2.0
 djangorestframework==3.8.2
 gunicorn==19.8.1
+python-3.6.4

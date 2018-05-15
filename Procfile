@@ -1,1 +1,1 @@
-web: gunicorn GDPRHero.application
+web: gunicorn GDPRHero.wsgi --log-file-
