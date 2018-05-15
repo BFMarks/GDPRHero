@@ -1,0 +1,36 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+<!-- <link rel="stylesheet" href="{% static 'css/signup.css' %}"> -->
+
+<!-- <img src="http://image005.flaticon.com/1/svg/74/74229.svg" alt="user icon" class="logo"> -->
+<img src="{% static 'img/GDPRLogo.jpg' %}" alt="GDPRHero"  class="logo"/>
+    <div class="cd-tabs">
+      <nav>
+        <ul class="cd-tabs-navigation">
+          <!-- <li><a href="#" data-content="login" class="selected">login</a></li> -->
+          <li><a href="#" data-content="signup">signup</a></li>
+        </ul>
+      </nav>
+      <ul class="cd-tabs-content">
+        <li data-content="login" class="selected">
+          <form name="login-form">
+            <div class="form-fild">
+              <label for="username">username</label>
+              <input type="text" name="username">
+            </div>
+            <div class="form-fild">
+              <label for="password">password</label>
+              <input type="password" name="password">
+            </div>
+          <form method="post" novalidate>
+          <span class="error"></span>
+          <button type="submit">Submit</button>
+        </form>
+        </li>
+      </ul>
+    </div>
+  <script async defer src="{% static 'js/signup.js' %}"></script>
+{% endblock %}

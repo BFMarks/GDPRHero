@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+{% load static %}
+
+  <title>GDPR Hero</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
+  <div class="main container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h1 class="title">
+          <img src="{% static 'img/GDPRLogo.jpg' %}" alt="GDPRHero"/>
+        </h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h2 class="subtitle">
+          Tetts is a simple online test editor<br/>
+          that enables anyone to save and edit notes <span class="only-desktop">using rich text</span><br/>
+          <strong>Simply access an URL on the site <span class="only-mobile"><br/></span>and start typing!</strong>
+        </h2>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="input-group">
+          
+          {% for field in homeInput_form %}
+          <span class="input-group-addon"> Speak With</span>
+           
+          
+          {{ field }}
+          {% endfor %}
+        </div>
+
+        <div class="center">
+
+          <form  action="/" method="post"/>          
+          <label for="inputEmailToSpeakWithExpert"></label>
+          <!-- <input id="your_name" type="text" name="your_name" value="{{ current_name }}"> -->
+          
+          <!-- {{ homeInput_form_post }} -->
+          {{ homeInput_form_post.inputEmailToSpeakWithExpert }}
+          <!-- <button type="button" class="button">Get Started</a> -->
+            <input type="submit" value="Get Started">
+            {% csrf_token %}     
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="container">
+      <div class="col-md-offset-4 col-md-4">
+        <ul class="nav nav-pills nav-justified">
+          <li>
+            <!-- <a class="github-button" href="https://github.com/renatoliveira/notto" data-size="large" data-show-count="true" aria-label="Star renatoliveira/notto on GitHub"  alt="Notto.io Github">Star</a> -->
+          </li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  <script async defer src="{% static 'js/home.js' %}"></script>
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+{% endblock %}
+
+
