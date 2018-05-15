@@ -20,7 +20,7 @@ urlpatterns = [
     # Change next page for logout
     url(r'^logout/$', auth_views.logout, {'next_page': '/'}, name='logout'),
     url(r'^signup/$', core_views.signup, name='signup'),
-    url(r'^accounts/', include('registration.backends.hmac.urls')),
+    # url(r'^accounts/', include('registration.backends.hmac.urls')),
    # How To: https://gearheart.io/blog/tutorial-django-user-registration-and-authentication/
     # url(r'^signup2/$', include('social_django.urls', namespace='social')),
    
