@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'snippets.apps.SnippetsConfig',
     'log.apps.LogConfig',
     'account.apps.AccountConfig',
-    'social_django',
     'rest_framework.authtoken',
 ]
 
@@ -54,9 +53,9 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '28418709220-ddjcsr2ratjk9doe8ruhocu9kd2v7md4.apps.googleusercontent.com'
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'B6hm0vj7Bmxsc_yVj9hQrruX'
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
