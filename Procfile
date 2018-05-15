@@ -1,1 +1,1 @@
-web: gunicorn GDPRHero.app
+web: gunicorn GDPRHero.application
