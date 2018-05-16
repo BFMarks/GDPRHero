@@ -52,7 +52,6 @@ class Profile(models.Model):
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
         Token.objects.create(user=instance)
-        print(token.key)
         Profile.objects.create(user=instance)
         # print("potato")
 
