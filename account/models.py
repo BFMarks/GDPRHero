@@ -19,7 +19,7 @@ class Apps(models.Model):
     # appName = models.TextField(max_length=100, blank=True)
     appsflyer_api_key = models.TextField(max_length=100, blank=True)
     amplitude_api_key = models.CharField(max_length=100, blank=True) 
-    owner = models.ForeignKey('auth.User', related_name='apps', on_delete=models.CASCADE)
+    owner = models.ForeignKey('auth.User', related_name='apps', on_delete=models.PROTECT)
 
     # highlighted = models.TextField()
     # class Meta:

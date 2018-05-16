@@ -67,6 +67,7 @@ def signup(request):
 
 def loginView(request):
     if request.method == 'POST':
+        print("test")
         form = AuthenticationForm(data=request.POST)
         if form.is_valid():
             print("test")

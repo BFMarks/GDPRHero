@@ -22,7 +22,7 @@ class Snippet(models.Model):
     idfa = models.CharField(max_length=100, blank=True, default='')
     appsflyer_int = models.BooleanField(default=False)
     bundle_id = models.CharField(max_length=100, blank=True, default='')
-    owner = models.ForeignKey('auth.User', related_name='snippets', on_delete=models.CASCADE)
+    owner = models.ForeignKey('auth.User', related_name='snippets', on_delete=models.PROTECT)
     # highlighted = models.TextField()
 
     class Meta:
@@ -38,7 +38,7 @@ class InboundEmail(models.Model):
 # Send emails: https://simpleisbetterthancomplex.com/tutorial/2017/05/27/how-to-configure-mailgun-to-send-emails-in-a-django-app.html
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.PROTECT)
     companyName = models.CharField(max_length=100, blank=True,default='')
     companyWebsite = models.CharField(max_length=100, blank=True,default='')
     email = models.CharField(max_length=100, blank=True)    
