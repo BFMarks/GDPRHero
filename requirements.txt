@@ -6,3 +6,4 @@ beautifulsoup4==4.6.0
 lxml==4.2.1
 Pygments==2.2.0
 djangorestframework==3.8.2
+gunicorn==19.8.1
