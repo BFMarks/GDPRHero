@@ -1,6 +1,8 @@
 Django==1.11.13
+pandas==0.20.1
 requests==2.18.4
 django_heroku==0.3.1
+beautifulsoup4==4.6.0
+lxml==4.2.1
 Pygments==2.2.0
 djangorestframework==3.8.2
-gunicorn==19.8.1
