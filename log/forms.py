@@ -6,8 +6,10 @@ from django.contrib.auth.models import User
 from snippets.models import Snippet, Profile,InboundEmail
 
 class SignUpForm(UserCreationForm):
-    companyWebsite = forms.CharField(label="Company Website", max_length=30)
-    username = forms.CharField(label="Company Name", max_length=30, 
+    companyWebsite = forms.CharField(label="Company Website", max_length=30,
+        # widget=forms.TextInput(attrs={'placeholder': 'Unicorn inc.'})
+        )
+    username = forms.CharField(label="Company Name (single word)", max_length=30, 
                                widget=forms.TextInput(attrs={ 'name': 'username'}))
 
 
@@ -43,9 +45,9 @@ class ProfileSignUpForm(forms.ModelForm):
 #Working
 class LoginForm(AuthenticationForm):
     username = forms.CharField(label="Company Name", max_length=30, 
-                               widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'username'}))
+                               widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'username','placeholder': 'Unicorn inc.'}))
     password = forms.CharField(label="Password", max_length=30, 
-                               widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'password'}))
+                               widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'password','placeholder': '123'}))
 
 class HomeInput(forms.ModelForm):
     inputEmailToSpeakWithExpert = forms.CharField(max_length=100)

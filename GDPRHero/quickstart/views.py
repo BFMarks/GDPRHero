@@ -7,6 +7,10 @@ from rest_framework import viewsets
 from GDPRHero.quickstart.serializers import UserSerializer, GroupSerializer
 from django.template import loader
 from django.http import HttpResponse
+from rest_framework.authtoken.models import Token
+import pandas as pd
+import datetime
+from snippets.models import Snippet
 
 # Create your views here.
 
@@ -25,3 +29,16 @@ class GroupViewSet(viewsets.ModelViewSet):
     """
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
+
+
+def documentation(request): 
+    if request.user.is_authenticated:
+        token = Token.objects.filter(user=request.user)
+        actualTokenString = list(token)[0]
+        print(actualTokenString)
+        return render(request, 'documentation.html', {
+            'actualTokenString': actualTokenString,
+            })
+    else:
+        return render(request, 'documentation.html')
+

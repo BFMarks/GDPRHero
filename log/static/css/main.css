@@ -7,7 +7,7 @@
 
 @font-face {
   font-family: Raleway-Regular;
-  src: url('../fonts/raleway/Raleway-Regular.ttf'); 
+  src: url('{% static 'fonts/raleway/Raleway-Regular.ttf' %}'); 
 }
 
 @font-face {
@@ -27,7 +27,7 @@
 
 /*//////////////////////////////////////////////////////////////////
 [ RESTYLE TAG ]*/
-
+a
 * {
 	margin: 0px; 
 	padding: 0px; 
@@ -236,7 +236,7 @@ iframe {
 
   display: block;
   width: 100%;
-  background: transparent;
+  background:  transparent;
   height: 55px;
   padding: 0 25px 0 25px;
 }

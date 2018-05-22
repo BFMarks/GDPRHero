@@ -90,7 +90,14 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10
+    'PAGE_SIZE': 10,
+     'DEFAULT_AUTHENTICATION_CLASSES': (
+       'rest_framework.authentication.TokenAuthentication',
+       'rest_framework.authentication.SessionAuthentication',
+   ),
+   'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAdminUser'
+   ),
 }
 
 WSGI_APPLICATION = 'GDPRHero.wsgi.application'
@@ -144,7 +151,20 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
+SITE_ROOT = os.path.dirname(os.path.realpath(__file__)) 
+print("SITE_ROOT&&&&&&&&")
+# print(SITE_ROOT)
+STATICFILES_DIRS = (
+  os.path.join(SITE_ROOT, 'log/static/'),
+)
+
 STATIC_URL = '/static/'
+print(STATICFILES_DIRS)
+STATICFILES_FINDERS = (
+'django.contrib.staticfiles.finders.FileSystemFinder',
+'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+#'django.contrib.staticfiles.finders.DefaultStorageFinder',
+)
 # Configure Django App for Heroku.
 import django_heroku
 django_heroku.settings(locals())

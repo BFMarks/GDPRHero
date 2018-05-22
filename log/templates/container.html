@@ -19,37 +19,22 @@
 
   {{ form.non_field_errors }}
 
-  {{ form.source.errors }}
-  {{ form.source }}
+  {% for hidden_field in form.hidden_fields %}
+    {{ hidden_field.errors }}
+    {{ hidden_field }}
+  {% endfor %}
 
   <table border="1">
-
+    {% for field in form.visible_fields %}
       <tr>
-        <th>{{ form.appsflyer_api_key.label_tag }}</th>
+        <th>{{ field.label_tag }}</th>
         <td>
-          {{ form.appsflyer_api_key.errors }}
-          {{ form.appsflyer_api_key }}
+          {{ field.errors }}
+          {{ field }}
+          {{ field.help_text }}
         </td>
       </tr>
-
-      <tr>
-        <th>{{ form.amplitude_api_key.label_tag }}</th>
-        <td>
-          {{ form.appsflyer_api_key.errors }}
-          {{ form.appsflyer_api_key }}
-        </td>
-      </tr>
-
-    <!--   <tr>
-        <th>{{ form.message.label_tag }}</th>
-        <td>
-          {{ form.message.errors }}
-          {{ form.message }}
-          <br />
-          {{ form.message.help_text }}
-        </td>
-      </tr> -->
-
+    {% endfor %}
   </table>
 
   <button type="submit">Submit</button>

@@ -8,8 +8,8 @@ class SnippetSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Snippet
-        fields = ('url', 'id', 'owner','bundle_id',
-                  'deviceName', 'advertising_id', 'idfa', 'appsflyer_int',)
+        fields = ('url', 'id','app_id', 'owner','bundle_id',
+                  'deviceName', 'advertising_id', 'idfa','mixpanel_user_id','customer_user_id')
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):

@@ -59,7 +59,7 @@ def signup(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=user.username, password=raw_password)
             login(request, user)
-            return redirect('account')
+            return redirect('app_list')
     else:
         form = SignUpForm()
     return render(request, 'signup.html', {'form': form})
@@ -67,13 +67,12 @@ def signup(request):
 
 def loginView(request):
     if request.method == 'POST':
-        print("test")
         form = AuthenticationForm(data=request.POST)
         if form.is_valid():
             print("test")
             user = form.get_user()
             login(request,user)
-            return redirect('account.html')
+            return redirect('app_list')
     else:
         form = AuthenticationForm()
     return render(request,'login.html',{'form':form})

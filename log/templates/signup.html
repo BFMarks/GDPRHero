@@ -3,38 +3,45 @@
 
 {% load static %}
 {% block content %}
-<!-- <link rel="stylesheet" href="{% static 'css/signup.css' %}"> -->
+<body>
+<link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+<div class="limiter">
+    <div class="container-login100">
+      <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
 
-<!-- <img src="http://image005.flaticon.com/1/svg/74/74229.svg" alt="user icon" class="logo"> -->
-<img src="{% static 'img/GDPRLogo.jpg' %}" alt="GDPRHero"  class="logo"/>
-    <div class="cd-tabs">
-      <nav>
-        <ul class="cd-tabs-navigation">
-          <!-- <li><a href="#" data-content="login" class="selected">login</a></li> -->
-          <!-- <li><a href="#" data-content="signup">signup</a></li> -->
-        </ul>
-      </nav>
-      <ul class="cd-tabs-content">
-        <!-- <li data-content="login" class="selected"> -->
-            <h2>Sign up</h2>
-  <form method="post">
-    {% csrf_token %}
-    {% for field in form %}
-      <p>
-        {{ field.label_tag }}<br>
-        {{ field }}
-        {% if field.help_text %}
-          <small style="color: grey">{{ field.help_text|safe  }}</small>
-        {% endif %}
-        {% for error in field.errors %}
-          <p style="color: red">{{ error }}</p>
-        {% endfor %}
-      </p>
-    {% endfor %}
-    <button type="submit">Sign up</button>
-  </form>
-        </li>
-      </ul>
-    </div>
-  <script async defer src="{% static 'js/signup.js' %}"></script>
+      <img src="{% static 'img/GDPRLogo.jpg' %}" alt="GDPRHero"  class="logo"/>
+          <div class="cd-tabs">
+            <nav>
+              <ul class="cd-tabs-navigation">
+                <!-- <li><a href="#" data-content="login" class="selected">login</a></li> -->
+                <!-- <li><a href="#" data-content="signup">signup</a></li> -->
+              </ul>
+            </nav>
+            <ul class="cd-tabs-content">
+              <!-- <li data-content="login" class="selected"> -->
+          <span class="login100-form-title p-b-32">Account Signup</span>
+        <form method="post" class="login100-form validate-form flex-sb flex-w">
+          {% csrf_token %}
+          {% for field in form %}
+            <p>{{ field.label_tag }}<br>
+              <p type="text" class="input100">{{ field }}</p>
+              {% if field.help_text %}
+                <!-- <small style="color: grey">{{ field.help_text|safe  }}</small> -->
+              {% endif %}
+              {% for error in field.errors %}
+                <p style="color: red">{{ error }}</p>
+              {% endfor %}
+            </p>
+          {% endfor %}
+          <button type="submit" class="btn btn-primary pull-right" >Sign up</button>
+        </form>
+              </li>
+            </ul>
+          </div>
+        <script async defer src="{% static 'js/signup.js' %}"></script>
+        </div>
+        </div>
+        </div>
+      </body>
 {% endblock %}

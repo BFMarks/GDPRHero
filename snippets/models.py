@@ -20,8 +20,15 @@ class Snippet(models.Model):
     deviceName = models.CharField(max_length=100, blank=True, default='')
     advertising_id = models.CharField(max_length=100, blank=True, default='')
     idfa = models.CharField(max_length=100, blank=True, default='')
-    appsflyer_int = models.BooleanField(default=False)
     bundle_id = models.CharField(max_length=100, blank=True, default='')
+    amplitude_user_id = models.CharField(max_length=100, blank=True, default='')
+    braze_user_id = models.CharField(max_length=100, blank=True, default='') 
+    mixpanel_user_id = models.CharField(max_length=100, blank=True, default='') 
+    urbanairship_user_id = models.CharField(max_length=100, blank=True, default='')
+    branch_user_id = models.CharField(max_length=100, blank=True, default='')
+    adjust_user_id = models.CharField(max_length=100, blank=True, default='')
+    customer_user_id = models.CharField(max_length=100, blank=True, default='')
+    app_id = models.CharField(max_length=100, blank=False, default='')
     owner = models.ForeignKey('auth.User', related_name='snippets', on_delete=models.PROTECT)
     # highlighted = models.TextField()
 
@@ -91,20 +98,28 @@ def ensure_snippet_exists(sender,instance, **kwargs):
         currentTime = d.isoformat()
         print(d)
         print("it's working meow!!!")
+        print(instance.app_id)
         print(instance.deviceName)
         print(instance.advertising_id)
         print(instance.idfa)
-        print(instance.appsflyer_int)
+        
         print(instance.bundle_id)
         print(instance.owner)
+        #PRINT APP ID
         print(instance.id)
         print(uuid.uuid4())
-        appsflyer_api_keyDict = Apps.objects.filter(owner=instance.owner).values('appsflyer_api_key')        
-        for value in appsflyer_api_keyDict:
-            print(value)
-            print(list(value.values())[0])
-            if value == "q":
-                payload = {'subject_request_id': uuid.uuid4(), 'subject_request_type': 'erasure', 'submitted_time':currentTime,
+        appIdObject = Apps.objects.filter(app_id=instance.app_id).values('app_id')
+        appOwnerObject = Apps.objects.filter(owner=instance.owner).values('app_id')        
+        
+        # App and Owner are The Same
+        if appIdObject[0] in appOwnerObject:
+            appObject = Apps.objects.filter(app_id=instance.app_id).values('appsflyer_api_key')
+            appsflyer_api_keyDict  = list(appObject)[0]
+            if appsflyer_api_keyDict.get("appsflyer_api_key") != "":
+                print("AppsFlyer Integrated")
+                # change host
+                headers = {'Host':'http://www.bryan.com',  'Accept': 'application/json', 'Content-type': 'application/json' }
+                payload = {'subject_request_id': uuid.uuid4(), 'subject_request_type': 'erasure', 'submitted_time':"2018-05-19T15:00:00Z",
                  "subject_identities": [
                       { 
                         "identity_type": "ios_advertising_id",
@@ -114,13 +129,14 @@ def ensure_snippet_exists(sender,instance, **kwargs):
                         "api_version": "0.1",
                         "property_id": instance.bundle_id,
                         "status_callback_urls": [
+                        #record response
                         "https://examplecontroller.com/opengdpr_callbacks"
                          ]  }
-                response = requests.post('https://hq1.appsflyer.com/gdpr/stub?api_token=3bdacf41-c341-4d60-9929-31c143b39bb2',  data = payload)
-                print(response.status_code)
+                response = requests.post('https://hq1.appsflyer.com/gdpr/stub?api_token=3bdacf41-c341-4d60-9929-31c143b39bb2',  data = payload, headers=headers)
+                print(response)
                 print("RESPONSE TEXT:")
                 print(response.text)
-                # print(response.status_code)
+                print(payload)
 
 
 

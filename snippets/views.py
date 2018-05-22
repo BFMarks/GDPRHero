@@ -3,7 +3,7 @@ from snippets.serializers import SnippetSerializer,ProfileSerializer
 from rest_framework import generics
 from django.contrib.auth.models import User
 from snippets.serializers import UserSerializer
-from rest_framework import permissions
+from rest_framework import permissions,authentication
 from snippets.permissions import IsOwnerOrReadOnly
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -23,7 +23,10 @@ class SnippetList(generics.ListCreateAPIView):
     queryset = Snippet.objects.all()
     serializer_class = SnippetSerializer
     # remove permissions for public
+    # permission_classes = (permissions.IsAdminUser,)
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+    # permission_classes = (permissions.IsAuthenticated,)
+    authentication_classes = (authentication.TokenAuthentication,)
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
@@ -66,6 +69,18 @@ class UserList(generics.ListAPIView):
 class UserDetail(generics.RetrieveAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+
+# class ScrubbedUserList(generics.ListAPIView):
+#     serializer_class = ScrubbedUserSerializer
+
+#     def get_queryset(self):
+#         """
+#         This view should return a list of all the purchases
+#         for the currently authenticated user.
+#         """
+#         user = self.request.user
+#         return Purchase.objects.filter(purchaser=user)
 
 
 # @api_view(['GET'])

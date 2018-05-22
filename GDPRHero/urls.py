@@ -18,6 +18,9 @@ from rest_framework import routers
 from django.contrib import admin
 from log.forms import LoginForm
 from django.contrib.auth import views as auth_views
+from django.conf import settings
+from .quickstart import views
+
 
 # router = routers.DefaultRouter()
 # router.register(r'users', views.UserViewSet)
@@ -25,18 +28,13 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+
     # url(r'^', include(router.urls)),
     # url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^', include('snippets.urls')),
     url(r'^', include('log.urls')),
     url(r'^', include('account.urls')),
-    
-    # url(r'^login/$', auth_views.login, name='login'),
-    # url(r'^logout/$', auth_views.logout, name='logout'),
-    
 
-
-    # url(r'^login/$', views.login, {'template_name': 'login.html', 'authentication_form': LoginForm}),
-    # url(r'^logout/$', views.logout, {'next_page': '/login'}),  
+    url(r'^documentation/$', views.documentation, name='documentation'),  
 
 ]

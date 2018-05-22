@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+
+    <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-header">
+                         {% if user.is_authenticated %}
+                                      <h1>Welcome {{ user.username }}</h1>
+                                    {% else %}                                      
+                                    {% endif %}
+                        
+                        <a class="btn btn-default" style="float:right;" href="{% url 'app_new' %}"><span class="c"></span>+ Make A New App Compliant</a>
+                        
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+
+    
+{% for apps in apps %}
+            <div class="row margin-b-2">
+                <div class="col-sm-6 col-md-3">
+                    <!-- <h1>{{ apps.app_name }}</h1>  -->
+                    <a href="{% url 'app_detail' pk=apps.pk %}">
+                    <img  class="img-responsive thumbnail" src="{{ apps.image_url }}" alt="">
+                    </a>
+                    <div class="caption">
+
+                        <h4><a href="{% url 'app_detail' pk=apps.pk %}">{{ apps.app_name }}</a></h4>
+                        <p>App ID: {{ apps.app_id }}</p>
+
+                       <!-- <h1>{{ apps.app_id }}</h1> -->
+
+<!--                     </div> -->
+                    
+</div>
+                </div>
+        {% endfor %}
+
+
+{% endblock %}
