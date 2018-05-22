@@ -8,7 +8,7 @@ from GDPRHero.quickstart.serializers import UserSerializer, GroupSerializer
 from django.template import loader
 from django.http import HttpResponse
 from rest_framework.authtoken.models import Token
-import pandas as pd
+# import pandas as pd
 import datetime
 from snippets.models import Snippet
 
