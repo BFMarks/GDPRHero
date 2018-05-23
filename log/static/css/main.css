@@ -82,8 +82,10 @@ ul, li {
 
 /*---------------------------------------------*/
 input {
+  width: 400px;
 	outline: none;
 	border: none;
+
 }
 
 textarea {

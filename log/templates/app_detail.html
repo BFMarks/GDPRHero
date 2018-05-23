@@ -7,7 +7,7 @@
                 {{ app.published_date }}
             </div>
         {% endif %} -->
-        <a class="btn btn-default" href="{% url 'app_edit' pk=app.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+        <a class="btn btn-default" href="{% url 'app_detail' pk=app.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
         <h1>{{ app.app_id }}</h1>
         <!-- <p>{{ app.text|linebreaksbr }}</p> -->
     </div>
