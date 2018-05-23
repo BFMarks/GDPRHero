@@ -26,7 +26,7 @@ SECRET_KEY = 'i$%nu^&^zv#^1t_66rul=-9nx@kz2866p@ezztc*g$+e((iwk7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['gdprhero.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = []
 
 
 
@@ -113,6 +113,13 @@ DATABASES = {
     }
 }
 
+print(BASE_DIR)
+
+# import dj_database_url
+
+# db_config = dj_database_url.config()
+# if db_config:
+    # DATABASES['default'] =  db_config
 
 LOGIN_REDIRECT_URL = '/account'
 
@@ -133,6 +140,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
 
 
 # Internationalization
@@ -169,7 +177,3 @@ STATICFILES_FINDERS = (
 # Configure Django App for Heroku.
 import django_heroku
 django_heroku.settings(locals())
-# Heroku: Update database configuration from $DATABASE_URL.
-import dj_database_url
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
