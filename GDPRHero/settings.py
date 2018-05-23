@@ -113,6 +113,9 @@ DATABASES = {
     }
 }
 
+SECURE_SSL_REDIRECT = True # [1]
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
 print(BASE_DIR)
 
 # import dj_database_url
