@@ -8,15 +8,16 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 import requests
-from datetime import datetime, timezone   
+from datetime import datetime
 import uuid
 from django.db.models import F
 from rest_framework.authtoken.models import Token
 from account.models import Apps
-
+from django.utils import timezone
+from django.core.mail import EmailMultiAlternatives
 
 class Snippet(models.Model):
-    created = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(default=timezone.now)
     deviceName = models.CharField(max_length=100, blank=True, default='')
     advertising_id = models.CharField(max_length=100, blank=True, default='')
     idfa = models.CharField(max_length=100, blank=True, default='')
@@ -29,9 +30,13 @@ class Snippet(models.Model):
     adjust_user_id = models.CharField(max_length=100, blank=True, default='')
     customer_user_id = models.CharField(max_length=100, blank=True, default='')
     app_id = models.CharField(max_length=100, blank=False, default='')
+    optimizely_id = models.CharField(max_length=100, blank=True, default='')
+    googleAnalytics_id = models.CharField(max_length=100, blank=True, default='')
+    facebook_user_id = models.CharField(max_length=100, blank=True, default='')
+    clever_tap_id = models.CharField(max_length=100, blank=True, default='')
+    fabric_id = models.CharField(max_length=100, blank=True, default='')
     owner = models.ForeignKey('auth.User', related_name='snippets', on_delete=models.PROTECT)
     # highlighted = models.TextField()
-
     class Meta:
         ordering = ('created',)
 
@@ -39,10 +44,30 @@ class InboundEmail(models.Model):
     inboundEmail = models.EmailField(max_length=70,blank=True, null= True)
     properEmail = models.BooleanField(default=True)
     emailSentToUS = models.BooleanField(default=False)
-    # created = models.DateTimeField(auto_now_add=True)
-    # class Meta:
-        # ordering = ('created',)
-# Send emails: https://simpleisbetterthancomplex.com/tutorial/2017/05/27/how-to-configure-mailgun-to-send-emails-in-a-django-app.html
+    created = models.DateTimeField(default=timezone.now)
+    class Meta:
+        ordering = ('created',)
+
+@receiver(post_save, sender=InboundEmail)
+def send_post_inbound_email(sender,instance, **kwargs):
+    if kwargs.get('created', False):
+        text_content = """
+        Hello!
+        
+        GDPR is a pain for bussiness but let's make it as easy as possible to get compliant!  Our team will reach out to you shortly.
+        
+        Kindest regards,
+        
+        GDPRHero Team"""
+        print(instance.inboundEmail)
+        email = EmailMultiAlternatives('Welcome To Pain Free GDPR Compliance!', text_content, 'Do Not Reply <do_not_replay@domain.com>', [instance.inboundEmail])
+        email.send()
+        emailToSales = EmailMultiAlternatives('We Have An Inbound Email!', instance.inboundEmail, 'Do Not Reply <do_not_replay@domain.com>', ['john@gdprhero.io'])
+        emailToSales.send()
+        return
+        
+
+
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.PROTECT)
@@ -66,23 +91,9 @@ def create_user_profile(sender, instance, created, **kwargs):
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
 
-
-
-# GENDER_CHOICES = (
-# ('M', 'Male'),
-# ('F', 'Female'),
-# ('P', 'Prefer not to answer'),
-# )
-
-# class UserProfile(models.Model):
-#     user = models.OneToOneField(User, related_name='profile')
-#     nickname = models.TextField(max_length=64, null=True, blank=True)
-#     dob = models.DateField(null=True, blank=True)
-#     gender = models.CharField(max_length=1, 
-#                               choices=GENDER_CHOICES, default='M')
-#     bio = models.TextField(max_length=1024, null=True, blank=True)
-    
-
+# @receiver(pre_save, sender=Snippet)
+# def ensure_snippet_can_be_saved(sender, instance, *args, **kwargs):
+#     instance.slug = slugify(instance.title)
 
 @receiver(post_save, sender=User)
 def ensure_profile_exists(sender, **kwargs):
@@ -96,7 +107,7 @@ def ensure_snippet_exists(sender,instance, **kwargs):
         # UserProfile.objects.get_or_create(user=kwargs.get('instance'))
         d = datetime.now(timezone.utc).astimezone()
         currentTime = d.isoformat()
-        print(d)
+        print(instance)
         print("it's working meow!!!")
         print(instance.app_id)
         print(instance.deviceName)
@@ -110,12 +121,14 @@ def ensure_snippet_exists(sender,instance, **kwargs):
         print(uuid.uuid4())
         appIdObject = Apps.objects.filter(app_id=instance.app_id).values('app_id')
         appOwnerObject = Apps.objects.filter(owner=instance.owner).values('app_id')        
-        
+        print(appIdObject)
+        print(appOwnerObject)
         # App and Owner are The Same
         if appIdObject[0] in appOwnerObject:
             appObject = Apps.objects.filter(app_id=instance.app_id).values('appsflyer_api_key')
             appsflyer_api_keyDict  = list(appObject)[0]
-            if appsflyer_api_keyDict.get("appsflyer_api_key") != "":
+            print("maybe not a match?")
+            if appsflyer_api_keyDict.get("appsflyer_api_key") == "q":
                 print("AppsFlyer Integrated")
                 # change host
                 headers = {'Host':'http://www.bryan.com',  'Accept': 'application/json', 'Content-type': 'application/json' }

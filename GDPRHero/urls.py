@@ -34,7 +34,10 @@ urlpatterns = [
     url(r'^', include('snippets.urls')),
     url(r'^', include('log.urls')),
     url(r'^', include('account.urls')),
+    
 
     url(r'^documentation/$', views.documentation, name='documentation'),  
+    # url(r'^$', views.UsersListView.as_view(), name='users_list'),
+    # url(r'^generate/$', views.GenerateRandomUserView.as_view(), name='generate'),
 
 ]

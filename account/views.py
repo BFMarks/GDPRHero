@@ -17,9 +17,11 @@ import requests
 import re
 import pandas as pd
 import datetime
-
-
-# Create your views here.
+from django.core.mail import send_mail
+from django.core.mail import EmailMultiAlternatives
+from django.core import mail
+import datetime
+from django.utils import timezone
 
 @login_required
 def account_home(request):
@@ -121,7 +123,22 @@ def app_edit(request, pk):
             app.owner = request.user
             app.appsflyer_api_key = form.cleaned_data['appsflyer_api_key']
             app.amplitude_api_key = form.cleaned_data['amplitude_api_key']
+            app.braze_api_key = form.cleaned_data['braze_api_key']
+            app.mixpanel_api_key = form.cleaned_data['mixpanel_api_key']
+            app.urbanairship_api_key = form.cleaned_data['urbanairship_api_key']
+            app.branch_api_key = form.cleaned_data['branch_api_key']
+            app.adjust_api_key = form.cleaned_data['adjust_api_key']
+
+            app.appsflyer_bool = form.cleaned_data['appsflyer_bool']
+            app.amplitude_bool = form.cleaned_data['amplitude_bool']
+            app.braze_bool = form.cleaned_data['braze_bool']
+            app.mixpanel_bool = form.cleaned_data['mixpanel_bool']
+            app.urbanairship_bool = form.cleaned_data['urbanairship_bool']
+            app.branch_bool = form.cleaned_data['branch_bool']
+            app.adjust_bool = form.cleaned_data['adjust_bool']
+            
             print(app.appsflyer_api_key)
+            print(app.appsflyer_bool)
             app.save()
             return redirect('app_detail', pk=app.pk)
     else:
@@ -146,58 +163,6 @@ def getCSV(request):
         print(apps)
         return render(request, 'app_home.html', {'apps': apps,})
 
-# def appsflyer_int(request):
-#     if request.method == 'GET' and request.user.is_authenticated:
-#         appsData = Apps.objects.all()
-#         print("appsData")
-#         print(appsData)
-
-#         token = Token.objects.filter(user=request.user)
-#         actualTokenString = list(token)[0]
-#         # current_user = request.user
-#         form = InputAPIKeysForm()
-#         print(form)
-
-#     if request.method == 'POST' and request.user.is_authenticated:
-#         appsData = Apps.objects.filter(owner=request.user)
-#         print(appsData)
-
-#         token = Token.objects.filter(user=request.user)
-#         actualTokenString = list(token)[0]
-#         print(request.user)
-#         d = datetime.now(timezone.utc).astimezone()
-#         currentTime = d.isoformat()
-#         dataToGiveForm={'owner_id': request.user ,'app_id':'testApp'}
-#         print(dataToGiveForm)
-
-#         form = InputAPIKeysForm(request.POST,dataToGiveForm)
-#         if form.is_valid():
-#             print('form is valid')
-#             print(form)
-#             obj = Apps()
-#             obj.app_id = form.cleaned_data['app_id']
-#             obj.appsflyer_api_key = form.cleaned_data['appsflyer_api_key']
-#             # obj.owner = form.cleaned_data['owner']
-#             appsflyer_int_working = Apps.objects.create(owner=request.user)
-#             print(appsflyer_int)
-#             obj.save()
-#             return render(request, 'container.html')
-#             # 'actualTokenString': actualTokenString,
-#             # 'form': form
-#         # })
-#         else:
-#             print('form is NOTvalid')
-#             form = InputAPIKeysForm()
-#         # keysInput_form = InputAPIKeysForm(data=request.POST)
-#         # if keysInput_form.is_valid():
-#         #     appsflyer_api_key = keysInput_form.cleaned_data['appsflyer_api_key']
-#         #     print("appsflyer_api_key@@@@@@@@@@@!")
-#         #     print(appsflyer_api_key)
-#     return render(request, 'container.html', {
-#             'actualTokenString': actualTokenString,
-#             'form': form
-#         })
-
 
 def takeURL(url):
     # url = "https://itunes.apple.com/us/app/pinterest/id429047995?mt=8"
@@ -221,18 +186,38 @@ def takeURL(url):
     app_id_from_store = spliceURL.split("?")[0]
 
     return [appImage, titleText, app_id_from_store]
-    # return  render(request, 'app_home.html',{
-    #     'appImage':appImage,
-    #     'titleText':titleText,
-    #     'app_id_from_store':app_id_from_store
-    #     })
-        
+    
 
-        # for items in thelist:
-            # print(list(items))
-    #print alternate text
-        # wholeThingAsString = string(image)
-        # print(wholeThingAsString.split("world",1)[1])
-    
-    
-    # print(doc)
+def sendEmail(request):
+    if request.method == "GET" and request.user.is_authenticated:
+        # #This works:
+        # text_content = "Hello World"
+        # email = EmailMultiAlternatives('subject', text_content, 'Dont Reply <do_not_replay@domain.com>', ['bryan@gdprhero.io'])
+        # email.send()
+        
+        # today_min = datetime.datetime.combine(datetime.date.today(), datetime.time.min)
+        # today_max = datetime.datetime.combine(datetime.date.today(), datetime.time.max)        
+        print(datetime.date.today())
+        todays_snippets = Snippet.objects.filter(created__contains=datetime.date.today()).values('app_id')
+        print(todays_snippets)
+        print(todays_snippets.count())
+        allApps = Apps.objects.all().values_list('app_id', flat=True) 
+        print(allApps)
+        print(allApps.count())
+        df = pd.DataFrame(list(Snippet.objects.filter(created__contains=datetime.date.today()).values()))
+        allAppsToPandas = pd.DataFrame(list(Apps.objects.all().values()))
+        allColumns = pd.merge(df, allAppsToPandas, how='left', on=['app_id'])
+        allColumns.to_csv("/Users/bryanmarks/GDPRHero/allColumns.csv")
+        mixpanelColumns = allColumns[allColumns['mixpanel_bool'] == True]
+        mixpanelColumns.to_csv("/Users/bryanmarks/GDPRHero/mixpanelColumns.csv")
+        # for oneSnippet in todays_snippets:
+        #     print(type(oneSnippet))
+        #     print(oneSnippet["app_id"])
+        #     itemForReview = oneSnippet["app_id"]
+        #     for itemForReview in allApps:
+        #         print("allApps")
+        #         appForEmail = Apps.objects.filter(app_id=allApps).values()[0]
+        #         print(appForEmail)
+                
+
+        return render(request, 'app_home.html')

@@ -20,7 +20,7 @@ BOOL_CHOICES = ((True, 'Yes'), (False, 'No'))
 class Apps(models.Model):
     #Unique 
     #All Keys
-    # created = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=True)
     app_id = models.TextField(max_length=100, blank=False)
     bundle_id = models.TextField(max_length=100, blank=True)
     ios_app = models.BooleanField(choices=BOOL_CHOICES)
@@ -36,6 +36,15 @@ class Apps(models.Model):
     adjust_api_key = models.CharField(max_length=100, blank=True) 
     customer_endpoint = models.CharField(max_length=100, blank=True) 
     owner = models.ForeignKey('auth.User', related_name='apps', on_delete=models.PROTECT)
+    
+    appsflyer_bool = models.BooleanField(default=False)
+    amplitude_bool = models.BooleanField(default=False)
+    braze_bool = models.BooleanField(default=False)
+    mixpanel_bool = models.BooleanField(default=False)
+    urbanairship_bool = models.BooleanField(default=False)
+    branch_bool = models.BooleanField(default=False)
+    adjust_bool = models.BooleanField(default=False)
+    customer_bool = models.BooleanField(default=False)
 
     # highlighted = models.TextField()
     # class Meta:
@@ -48,6 +57,3 @@ class Apps(models.Model):
     # def get_absolute_url(self):
     #     return ('view_app', None, { 'slug': self.slug })
 
-        
-
-        

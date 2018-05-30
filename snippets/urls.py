@@ -34,5 +34,13 @@ urlpatterns = format_suffix_patterns([
         views.UserDetail.as_view(),
         name='user-detail'),
 
+    url(r'^apps/$',
+        views.AppsList.as_view(),
+        name='apps-list'),
+
+    url(r'^apps/(?P<pk>[0-9]+)/$',
+        views.AppsList.as_view(),
+        name='apps-detail'),
+
     # url('^ScrubbedUserList/(?P<username>.+)/$', ScrubbedUserList.as_view()),
 ])

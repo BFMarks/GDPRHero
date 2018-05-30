@@ -5,6 +5,11 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from snippets.models import Snippet, Profile,InboundEmail
 from account.models import Apps
+from django import forms
+from django.utils.crypto import get_random_string
+from django import forms
+from django.utils.crypto import get_random_string
+
 
 
 
@@ -47,16 +52,17 @@ class AppEditForm(forms.ModelForm):
     urbanairship_api_key = forms.CharField(max_length=100,required=False)
     adjust_api_key = forms.CharField(max_length=100,required=False)
     branch_api_key = forms.CharField(max_length=100,required=False)
+
+    appsflyer_bool = forms.BooleanField(required=False,initial=False,label='Enable AppsFlyer GDPR Compliance')
+    amplitude_bool = forms.BooleanField(required=False,initial=False,label='Enable Amplitude GDPR Compliance')
+    braze_bool = forms.BooleanField(required=False,initial=False,label='Enable Braze GDPR Compliance')
+    mixpanel_bool = forms.BooleanField(required=False,initial=False,label='Enable AppsFlyer Mixpanel Compliance')
+    urbanairship_bool = forms.BooleanField(required=False,initial=False,label='Enable Urban Airship GDPR Compliance')
+    adjust_bool = forms.BooleanField(required=False,initial=False,label='Enable Adjust GDPR Compliance')
+    branch_bool = forms.BooleanField(required=False,initial=False,label='Enable Branch GDPR Compliance')
     
     class Meta:
         model = Apps
         fields = ('appsflyer_api_key','amplitude_api_key','braze_api_key','mixpanel_api_key','urbanairship_api_key','adjust_api_key')
 
 
-    # def __init__(self):
-        
-            # self.fields['ios_app'].initial  = True
-
-    # class Meta:
-    #     model = Apps
-    #     fields = ('ios_app','app_id')

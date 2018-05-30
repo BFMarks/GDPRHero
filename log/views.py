@@ -10,6 +10,7 @@ from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
 from snippets.models import Snippet, Profile,InboundEmail
 from django.contrib.auth.forms import AuthenticationForm
+from django.core.mail import send_mail
 
 # Create your views here.
 # @login_required(login_url="login/")
@@ -76,3 +77,7 @@ def loginView(request):
     else:
         form = AuthenticationForm()
     return render(request,'login.html',{'form':form})
+
+
+def termsofservice(request):
+    return render(request,'termsofservice.html')

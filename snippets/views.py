@@ -1,5 +1,6 @@
 from snippets.models import Snippet, Profile
-from snippets.serializers import SnippetSerializer,ProfileSerializer
+from account.models import Apps
+from snippets.serializers import SnippetSerializer,ProfileSerializer, AppsSerializer
 from rest_framework import generics
 from django.contrib.auth.models import User
 from snippets.serializers import UserSerializer
@@ -29,6 +30,18 @@ class SnippetList(generics.ListCreateAPIView):
     authentication_classes = (authentication.TokenAuthentication,)
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
+
+class AppsList(generics.ListCreateAPIView):
+    queryset = Apps.objects.all()
+    serializer_class = AppsSerializer
+    # remove permissions for public
+    # permission_classes = (permissions.IsAdminUser,)
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+    # permission_classes = (permissions.IsAuthenticated,)
+    authentication_classes = (authentication.TokenAuthentication,)
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+
 
 class ProfileList(generics.ListCreateAPIView):
     queryset = Profile.objects.all()

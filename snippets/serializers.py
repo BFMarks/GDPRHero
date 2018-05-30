@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from snippets.models import Snippet, Profile
+from account.models import Apps
 from django.contrib.auth.models import User
 
 class SnippetSerializer(serializers.HyperlinkedModelSerializer):
@@ -9,8 +10,16 @@ class SnippetSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Snippet
         fields = ('url', 'id','app_id', 'owner','bundle_id',
-                  'deviceName', 'advertising_id', 'idfa','mixpanel_user_id','customer_user_id')
+                  'deviceName', 'advertising_id', 'idfa','mixpanel_user_id','customer_user_id','created')
 
+class AppsSerializer(serializers.HyperlinkedModelSerializer):
+    owner = serializers.ReadOnlyField(source='owner.username')
+    # highlight = serializers.HyperlinkedIdentityField(view_name='snippet-highlight', format='html')
+
+    class Meta:
+        model = Apps
+        fields = ('url', 'id','app_id', 'owner','bundle_id',
+                  'id','appsflyer_api_key','amplitude_api_key', 'appsflyer_bool', 'created')
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     snippets = serializers.HyperlinkedRelatedField(many=True, view_name='snippet-detail', read_only=True)
@@ -27,7 +36,7 @@ class ProfileSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Profile
-        fields = ('url', 'id','appsflyer_api_key','amplitude_api_key', 'user')
+        fields = ('url', 'id','companyName','companyWebsite','email', 'user')
             # , 'owner','bundle_id',
             #       'deviceName', 'advertising_id', 'idfa', 'appsflyer_int',)        
 

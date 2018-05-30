@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import datetime
+from django.utils import timezone
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -47,15 +49,21 @@ INSTALLED_APPS = [
     'log.apps.LogConfig',
     'account.apps.AccountConfig',
     'rest_framework.authtoken',
+    'huey.contrib.djhuey',
+    'django_celery_beat',
+    'django_celery_results',
 ]
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
 
+from huey import RedisHuey
+from redis import ConnectionPool
 
-
-
+# pool = ConnectionPool(host='my.redis.host', port=6379, max_connections=20)
+pool = ConnectionPool(host='localhost', port=6379, max_connections=20)
+HUEY = RedisHuey('my-app', connection_pool=pool)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -66,6 +74,25 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "asgi_redis.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [os.environ.get('REDISCLOUD_URL', 'redis://localhost:6379')],
+        },
+        "ROUTING": "chat.routing.channel_routing",
+    },
+}
+
+
+
+CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'UTC'
 
 ROOT_URLCONF = 'GDPRHero.urls'
 
@@ -86,8 +113,6 @@ TEMPLATES = [
         },
     },
 ]
-
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 REST_FRAMEWORK = {
@@ -145,7 +170,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'bryan@gdprhero.io'
+EMAIL_USE_TLS = True
+EMAIL_HOST_PASSWORD = 'loveTech4$'
+EMAIL_PORT = 587
+# EMAIL_BACKEND = 'post_office.EmailBackend'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
