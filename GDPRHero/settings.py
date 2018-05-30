@@ -85,6 +85,7 @@ CHANNEL_LAYERS = {
     },
 }
 
+# CELERY_IMPORTS = ("tasks.py", )
 
 
 CELERY_BROKER_URL = 'redis://localhost:6379'
