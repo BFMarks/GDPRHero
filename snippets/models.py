@@ -54,7 +54,7 @@ def send_post_inbound_email(sender,instance, **kwargs):
         text_content = """
         Hello!
         
-        GDPR is a pain for bussiness but let's make it as easy as possible to get compliant!  Our team will reach out to you shortly.
+        GDPR is a pain for business but let's make it as easy as possible to get compliant!  Our team will reach out to you shortly.
         
         Kindest regards,
         
