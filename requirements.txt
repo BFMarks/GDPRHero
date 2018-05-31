@@ -17,3 +17,5 @@ django-jsonfield==1.0.1
 -e git+https://github.com/celery/kombu.git@c627c6d9d1f29ae0bcb03931d5f24001e60f72a9#egg=kombu
 pytz==2018.4
 vine==1.1.4
+django-celery-beat==1.1.1
+django-celery-results==1.0.1
