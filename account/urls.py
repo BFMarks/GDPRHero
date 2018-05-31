@@ -18,6 +18,7 @@ urlpatterns = [
     url(r'^takeURL/$', views.takeURL, name='takeURL'),  
     url(r'^getCSV/$', views.getCSV, name='getCSV'),  
     url(r'^sendEmail/$', views.sendEmail, name='sendEmail'), 
+    path('django-rq/', include('django_rq.urls'))
     
 
 
