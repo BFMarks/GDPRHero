@@ -2,6 +2,8 @@ from __future__ import absolute_import, unicode_literals
 import os
 from celery import Celery
 from celery.schedules import crontab
+print("YOOOOOOOO")
+print(celery.__file__)
 # https://www.codingforentrepreneurs.com/blog/celery-redis-django/
 # Call with:
 # celery -A GDPRHero  beat -l info

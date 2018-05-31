@@ -153,5 +153,9 @@ def ensure_snippet_exists(sender,instance, **kwargs):
 
 
 
+# ADJUST GDPR ENDPOINT:
+# http://help.adjust.com/en/manage-your-data/data-privacy/gdpr#gdpr-api-requirements 
+
+
 
 

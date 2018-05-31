@@ -209,7 +209,7 @@ def sendEmail(request):
         allColumns = pd.merge(df, allAppsToPandas, how='left', on=['app_id'])
         allColumns.to_csv("/Users/bryanmarks/GDPRHero/allColumns.csv")
         mixpanelColumns = allColumns[allColumns['mixpanel_bool'] == True]
-        mixpanelColumns.to_csv("/Users/bryanmarks/GDPRHero/mixpanelColumns.csv")
+        mixpanelColumns.to_csv("/Users/bryanmarks/GDPRHero/allColumns.csv")
         # for oneSnippet in todays_snippets:
         #     print(type(oneSnippet))
         #     print(oneSnippet["app_id"])
