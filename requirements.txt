@@ -1,3 +1,4 @@
+gunicorn==19.8.1
 amqp==2.3.1
 beautifulsoup4==4.6.0
 -e git+https://github.com/celery/billiard.git@bf04adff8f8477cd7758c7f31325fbdeae7774e3#egg=billiard
