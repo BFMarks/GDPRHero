@@ -1,4 +1,4 @@
-web: gunicorn GDPRHero.wsgi
-worker: celery -A GDPRHero.celery_app worker
-beat: celery -A GDPRHero.celery_app beat -S django
+web: gunicorn GDPRHero.wsgi --debug --log-level debug
+worker: celery -A GDPRHero worker
+beat: celery -A GDPRHero beat -S django
  
