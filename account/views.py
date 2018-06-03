@@ -229,28 +229,5 @@ def sendCSVToDataProcessor(todays_snippets):
         email.send()
 
 def sendDataBackToClient(request):
-    print("AppsFlyer Integrated")
-    endpoint_url = 'https://hq1.appsflyer.com/gdpr/opengdpr_requests?api_token=1a7024e7-45e6-4b64-91df-7c965eb6977d'
-    headers = {'Accept': 'application/json', 'Content-Type': 'application/json', 'Host':'example.com'  }
-    payload =   {
-    "subject_request_id": "20b9c186-2288-4599-b32b-62184e1c1e62", "subject_request_type": "erasure", "submitted_time":"2018-05-25T15:00:00Z",
-                 "subject_identities": [
-                      { 
-                        "identity_type": "ios_advertising_id",
-                        "identity_value": "EA3E1682-5EEB-436C-9ECB-9A81C7881AAA",
-                        "identity_format": "raw"
-                      } ],
-                      
-                        "api_version": "0.1",
-                        "property_id": "id931639254",
-                        "status_callback_urls": [
-                        
-                         ] 
-   }
-    response = requests.post(endpoint_url,headers=headers,  data = payload)
-    print(headers)
-    print(payload)
-    print(response)
-    print("RESPONSE TEXT:")
-    print(response.text)
+
     return render(request, 'app_home.html')

@@ -222,7 +222,7 @@ def amplitudeCompliance(amplitudeAPI_token, customer_user_id, amplitude_user_id)
 
 def appsFlyerCompliance(instance_UUID_hero, idfa_from_instance, app_id_from_instance, AppsFlyerAPI_token, app_name, created):
     print("AppsFlyer Integrated")
-    endpoint_url = 'https://hq1.appsflyer.com/gdpr/opengdpr_requests?api_token='+ AppsFlyerAPI_token
+    endpoint_url = 'https://hq1.appsflyer.com/gdpr/opengdpr_requests?api_token='+ AppsFlyerAPI_token+'1'
     headers = {'Host':app_name+'.com',  'Accept': 'application/json', 'Content-type': 'application/json' }
     payload = {'subject_request_id': instance_UUID_hero, 'subject_request_type': 'erasure', 'submitted_time':created,
      "subject_identities": [
@@ -238,7 +238,9 @@ def appsFlyerCompliance(instance_UUID_hero, idfa_from_instance, app_id_from_inst
             "https://examplecontroller.com/opengdpr_callbacks"
              ]  }
     response = requests.post(endpoint_url,  data=json.dumps(payload), headers=headers)
-    print(response)
+    if response != 201:
+        print(response)
+        print("FAILED RESPONSE")
     print("RESPONSE TEXT:")
     print(response.text)
     print(payload)
