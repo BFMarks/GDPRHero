@@ -1,6 +1,6 @@
 from snippets.models import Snippet, Profile
-from account.models import Apps
-from snippets.serializers import SnippetSerializer,ProfileSerializer, AppsSerializer
+from account.models import Apps, AppsFlyerResponse
+from snippets.serializers import SnippetSerializer,ProfileSerializer, AppsSerializer, AppsFlyerResponseSerializer
 from rest_framework import generics
 from django.contrib.auth.models import User
 from snippets.serializers import UserSerializer
@@ -82,6 +82,12 @@ class UserList(generics.ListAPIView):
 class UserDetail(generics.RetrieveAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+class AppsFlyerResponseList(generics.RetrieveAPIView):
+    queryset = AppsFlyerResponse.objects.all()
+    serializer_class = AppsFlyerResponseSerializer
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
 
 
 # class ScrubbedUserList(generics.ListAPIView):

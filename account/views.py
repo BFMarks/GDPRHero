@@ -6,7 +6,7 @@ from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 from rest_framework import status
 from account.forms import InputAPIKeysForm, AppForm, AppEditForm
-from .models import Apps
+from .models import Apps , DataProcessors
 from datetime import datetime, timezone
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
@@ -22,6 +22,9 @@ from django.core.mail import EmailMultiAlternatives
 from django.core import mail
 import datetime
 from django.utils import timezone
+import csv
+import io
+import requests
 
 @login_required
 def account_home(request):
@@ -154,15 +157,6 @@ def configure(request, pk):
         'actualTokenString': actualTokenString,
         })    
 
-def getCSV(request):
-    if request.method == "GET" and request.user.is_authenticated:
-        df = pd.DataFrame(list(Snippet.objects.filter(owner=request.user)))
-        print(df)
-        df.to_csv("/Users/bryanmarks/GDPRHero/Data.csv")
-        apps = Apps.objects.filter(owner=request.user)
-        print(apps)
-        return render(request, 'app_home.html', {'apps': apps,})
-
 
 def takeURL(url):
     # url = "https://itunes.apple.com/us/app/pinterest/id429047995?mt=8"
@@ -190,34 +184,73 @@ def takeURL(url):
 
 def sendEmail(request):
     if request.method == "GET" and request.user.is_authenticated:
-        # #This works:
-        # text_content = "Hello World"
-        # email = EmailMultiAlternatives('subject', text_content, 'Dont Reply <do_not_replay@domain.com>', ['bryan@gdprhero.io'])
-        # email.send()
-        
-        # today_min = datetime.datetime.combine(datetime.date.today(), datetime.time.min)
-        # today_max = datetime.datetime.combine(datetime.date.today(), datetime.time.max)        
         print(datetime.date.today())
-        todays_snippets = Snippet.objects.filter(created__contains=datetime.date.today()).values('app_id')
+        todays_snippets = Snippet.objects.filter(created__contains=datetime.date.today()).values()
+        # todays_snippets = Snippet.objects.filter(created__contains='2018-05-29').values('app_id')
         print(todays_snippets)
         print(todays_snippets.count())
-        allApps = Apps.objects.all().values_list('app_id', flat=True) 
-        print(allApps)
-        print(allApps.count())
-        df = pd.DataFrame(list(Snippet.objects.filter(created__contains=datetime.date.today()).values()))
-        allAppsToPandas = pd.DataFrame(list(Apps.objects.all().values()))
-        allColumns = pd.merge(df, allAppsToPandas, how='left', on=['app_id'])
-        allColumns.to_csv("/Users/bryanmarks/GDPRHero/allColumns.csv")
-        mixpanelColumns = allColumns[allColumns['mixpanel_bool'] == True]
-        mixpanelColumns.to_csv("/Users/bryanmarks/GDPRHero/allColumns.csv")
-        # for oneSnippet in todays_snippets:
-        #     print(type(oneSnippet))
-        #     print(oneSnippet["app_id"])
-        #     itemForReview = oneSnippet["app_id"]
-        #     for itemForReview in allApps:
-        #         print("allApps")
-        #         appForEmail = Apps.objects.filter(app_id=allApps).values()[0]
-        #         print(appForEmail)
-                
+        if todays_snippets.count() == 0:
+            print("No snippets today")
+        elif todays_snippets.count() != 0:
+            sendCSVToDataProcessor(todays_snippets)    
+
 
         return render(request, 'app_home.html')
+
+def sendCSVToDataProcessor(todays_snippets):
+    allApps = Apps.objects.all().values_list('app_id', flat=True) 
+    df = pd.DataFrame(list(todays_snippets))
+    # df = pd.DataFrame(list(Snippet.objects.filter(created__contains='2018-05-29').values())) 
+    allAppsToPandas = pd.DataFrame(list(Apps.objects.all().values()))
+    allColumns = pd.merge(df, allAppsToPandas, how='left', on=['app_id'])
+    allColumns.to_csv("/Users/bryanmarks/GDPRHero/allColumns.csv")
+    dataProcessors_email_array = DataProcessors.objects.all().values_list('gdpr_email', flat=True)
+    dataProcessors_contact_array = DataProcessors.objects.all().values_list('contact', flat=True)
+    dataProcessors_column_to_recieve = DataProcessors.objects.all().values_list('processor_id', flat=True)
+    for emails, contact, processor_id in zip(dataProcessors_email_array, dataProcessors_contact_array, dataProcessors_column_to_recieve):
+
+        columnsToKeep = allColumns[[processor_id]]
+        columnsToKeep = columnsToKeep.dropna(subset=[processor_id])
+        columnsToKeep.to_csv()
+        output = io.StringIO()
+        csvdata = [columnsToKeep.to_csv()]
+        writer = csv.writer(output, delimiter=',',quotechar='|', quoting=csv.QUOTE_NONNUMERIC)
+        writer.writerow(csvdata)
+        text_content = """
+        Hello %s!
+        
+        Attached is a CSV of user data to be deleted, as required by GDPR.  If you would like to recieve this data via API request, please email bryan@gdprhero.io.
+        
+        Kindest regards,
+        
+        GDPRHero Team"""  % (contact)
+        email = EmailMultiAlternatives('Data To Delete For GDPR Compliance (Data Processed By GDPRHero)', text_content, 'Dont Reply <do_not_replay@domain.com>', [emails])
+        email.attach('Instances_For_Deletion' + str(datetime.date.today()) + '.csv', output.getvalue(), 'text/csv')
+        email.send()
+
+def sendDataBackToClient(request):
+    print("AppsFlyer Integrated")
+    endpoint_url = 'https://hq1.appsflyer.com/gdpr/opengdpr_requests?api_token=1a7024e7-45e6-4b64-91df-7c965eb6977d'
+    headers = {'Accept': 'application/json', 'Content-Type': 'application/json', 'Host':'example.com'  }
+    payload =   {
+    "subject_request_id": "20b9c186-2288-4599-b32b-62184e1c1e62", "subject_request_type": "erasure", "submitted_time":"2018-05-25T15:00:00Z",
+                 "subject_identities": [
+                      { 
+                        "identity_type": "ios_advertising_id",
+                        "identity_value": "EA3E1682-5EEB-436C-9ECB-9A81C7881AAA",
+                        "identity_format": "raw"
+                      } ],
+                      
+                        "api_version": "0.1",
+                        "property_id": "id931639254",
+                        "status_callback_urls": [
+                        
+                         ] 
+   }
+    response = requests.post(endpoint_url,headers=headers,  data = payload)
+    print(headers)
+    print(payload)
+    print(response)
+    print("RESPONSE TEXT:")
+    print(response.text)
+    return render(request, 'app_home.html')

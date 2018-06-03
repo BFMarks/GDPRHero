@@ -16,9 +16,8 @@ urlpatterns = [
     url(r'^app/(?P<pk>\d+)/configure/$', views.configure, name='configure'),
 
     url(r'^takeURL/$', views.takeURL, name='takeURL'),  
-    url(r'^getCSV/$', views.getCSV, name='getCSV'),  
     url(r'^sendEmail/$', views.sendEmail, name='sendEmail'), 
-    
+    url(r'^sendDataBackToClient/$', views.sendDataBackToClient, name='sendDataBackToClient'), 
 
 
 

@@ -14,7 +14,7 @@ urlpatterns = [
     # url(r'^', include('log.urls')),
 
     url(r'^$', views.home,name='home'),
-    url(r'home/^$', views.home,name='home'),
+    url(r'^newHome/$', views.newHome,name='newHome'),
     # url(r'^home/$', views.home, {'template_name': 'home.html'},name = 'home_logged_in'),    
     url(r'^login/$', views.loginView,  name='login'),
     

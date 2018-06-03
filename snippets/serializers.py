@@ -10,7 +10,22 @@ class SnippetSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Snippet
         fields = ('url', 'id','app_id', 'owner','bundle_id',
-                  'deviceName', 'advertising_id', 'idfa','mixpanel_user_id','customer_user_id','created')
+                  'deviceName', 'advertising_id', 'idfa','mixpanel_user_id','customer_user_id','amplitude_user_id','braze_user_id',
+'mixpanel_user_id',
+'urbanairship_user_id',
+'branch_user_id',
+'adjust_user_id',
+'customer_user_id',
+'app_id',
+'optimizely_user_id',
+'googleAnalytics_user_id',
+'facebook_user_id',
+'clever_tap_user_id',
+'fabric_user_id',
+'subparam1_user_id',
+'subparam2_user_id',
+'subparam3_user_id','created')
+        
 
 class AppsSerializer(serializers.HyperlinkedModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
@@ -40,6 +55,12 @@ class ProfileSerializer(serializers.HyperlinkedModelSerializer):
             # , 'owner','bundle_id',
             #       'deviceName', 'advertising_id', 'idfa', 'appsflyer_int',)        
 
+class AppsFlyerResponseSerializer(serializers.HyperlinkedModelSerializer):
+    owner = serializers.ReadOnlyField(source='owner.username')
+    class Meta:
+        model = Snippet
+        fields = ('created', 'subject_request_id','received_time', 'expected_completion_time','encoded_request')
+             
 # class SnippetSerializer(serializers.Serializer):
 #     id = serializers.IntegerField(read_only=True)
 #     title = serializers.CharField(required=False, allow_blank=True, max_length=100)

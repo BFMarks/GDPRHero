@@ -54,7 +54,7 @@ body {font-size:16px;}
     <!-- <h1 class="w3-jumbo"><b>GDPR Hero</b></h1> -->
     <h1 class="w3-xxxlarge w3-text-black"><b>GDPR Hero Documentation</b></h1>
     {% if user.is_authenticated %}                                                                      
-      <p>Your app's dev key is: {{ actualTokenString }}</p>
+      <p>Your app's HeroKey is: {{ actualTokenString }}</p>
     {% else %}
       <p>Sign Up <a href="{% url 'signup' %}">Here</a>
     {% endif %}

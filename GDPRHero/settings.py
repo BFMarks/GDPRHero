@@ -24,6 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'i$%nu^&^zv#^1t_66rul=-9nx@kz2866p@ezztc*g$+e((iwk7'
+# SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -108,12 +109,12 @@ RQ_EXCEPTION_HANDLERS = ['path.to.my.handler'] # If you need custom exception ha
 
 
 #FOR PRODUCTION
-CELERY_BROKER_URL=os.environ['REDIS_URL']
-CELERY_RESULT_BACKEND=os.environ['REDIS_URL']
+# CELERY_BROKER_URL=os.environ['REDIS_URL']
+# CELERY_RESULT_BACKEND=os.environ['REDIS_URL']
 
 #FOR DEVELOPMENT 
-# CELERY_BROKER_URL = 'redis://localhost:6379'
-# CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
 
 #MAINTAIN
 CELERY_ACCEPT_CONTENT = ['application/json']

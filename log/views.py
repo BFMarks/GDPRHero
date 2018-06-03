@@ -48,6 +48,40 @@ def home(request):
         'homeInput_form': homeInput_form
     })
 
+def newHome(request):
+    if request.method == 'GET':
+        properEmail =""
+        # if request.user.is_authenticated():
+            # return redirect('account')
+
+    if request.method == 'POST':
+        homeInput_form = HomeInput(data=request.POST)
+        if homeInput_form.is_valid():
+            subject = homeInput_form.cleaned_data['inputEmailToSpeakWithExpert']
+            # Send a text or email
+            # print(subject)
+            try:
+                validate_email(subject)
+            except ValidationError as e:
+                properEmail = "Please enter a valid email."
+                # messages.error(request, "Error")
+                print(properEmail)
+                return render(request, 'home.html', {
+                    'properEmail': properEmail
+                })
+            else:
+                print("hooray! email is valid")
+                instance = InboundEmail.objects.create(inboundEmail=subject)
+                properEmail = "We will reach out to you shortly."
+                return render(request, 'home.html', {
+                    'properEmail': properEmail
+                })
+    else:
+        homeInput_form = HomeInput()
+    return render(request, 'newHome.html', {
+        'homeInput_form': homeInput_form
+    })
+
 def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)

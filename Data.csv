@@ -1,8 +1,0 @@
-,adjust_user_id,advertising_id,amplitude_user_id,app_id,branch_user_id,braze_user_id,bundle_id,clever_tap_id,created,customer_user_id,deviceName,fabric_id,facebook_user_id,googleAnalytics_id,id,idfa,mixpanel_user_id,optimizely_id,owner_id,urbanairship_user_id
-0,,,,553834731,,,com.bryanmarks.appsflyer.example,,2018-05-29 01:12:00.515799+00:00,123Customer_user_id,,,,,56,4CFB8241-58AB-4709-B20C-08F9245BB5B0,123mixpanel_user_idtest,,4,
-1,,,,553834731,,,com.bryanmarks.appsflyer.example,,2018-05-29 01:37:31.284842+00:00,123Customer_user_id,,,,,57,4CFB8241-58AB-4709-B20C-08F9245BB5B0,123mixpanel_user_idtest,,4,
-2,,,,324684580,,,com.bryanmarks.appsflyer.example,,2018-05-29 01:56:25.905014+00:00,123Customer_user_id,,,,,58,4CFB8241-58AB-4709-B20C-08F9245BB5B0,123mixpanel_user_idtest,,4,
-3,,,,324684580,,,com.bryanmarks.appsflyer.example,,2018-05-29 01:58:01.830025+00:00,123Customer_user_id,,,,,59,4CFB8241-58AB-4709-B20C-08F9245BB5B0,123mixpanel_user_idtest,,4,
-4,,,,324684580,,,com.bryanmarks.appsflyer.example,,2018-05-29 01:58:07.545644+00:00,123Customer_user_id,,,,,60,4CFB8241-58AB-4709-B20C-08F9245BB5B0,123mixpanel_user_idtest,,4,
-5,,,,324684580,,,com.bryanmarks.appsflyer.example,,2018-05-29 02:04:32.141779+00:00,123Customer_user_id,,,,,61,4CFB8241-58AB-4709-B20C-08F9245BB5B0,123mixpanel_user_idtest,,4,
-6,,,,719972451,,,com.bryanmarks.appsflyer.example,,2018-05-29 02:06:08.183824+00:00,123Customer_user_id,,,,,62,4CFB8241-58AB-4709-B20C-08F9245BB5B0,123mixpanel_user_idtest,,6,
