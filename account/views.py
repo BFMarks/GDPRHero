@@ -106,6 +106,15 @@ def app_detail(request, pk):
         'actualTokenString': actualTokenString,
         })
 
+# @login_required(login_url='/login/')
+def app_detailv2(request, pk): 
+    app = get_object_or_404(Apps, pk=pk)
+    token = Token.objects.filter(user=request.user)
+    actualTokenString = list(token)[0]
+    return render(request, 'app_detailv2.html', {'app': app,
+        'actualTokenString': actualTokenString,
+        })
+
 def app_list(request): 
     apps = Apps.objects.filter(owner=request.user)
     print(apps)
@@ -132,13 +141,13 @@ def app_edit(request, pk):
             app.branch_api_key = form.cleaned_data['branch_api_key']
             app.adjust_api_key = form.cleaned_data['adjust_api_key']
 
-            app.appsflyer_bool = form.cleaned_data['appsflyer_bool']
-            app.amplitude_bool = form.cleaned_data['amplitude_bool']
-            app.braze_bool = form.cleaned_data['braze_bool']
-            app.mixpanel_bool = form.cleaned_data['mixpanel_bool']
-            app.urbanairship_bool = form.cleaned_data['urbanairship_bool']
-            app.branch_bool = form.cleaned_data['branch_bool']
-            app.adjust_bool = form.cleaned_data['adjust_bool']
+            # app.appsflyer_bool = form.cleaned_data['appsflyer_bool']
+            # app.amplitude_bool = form.cleaned_data['amplitude_bool']
+            # app.braze_bool = form.cleaned_data['braze_bool']
+            # app.mixpanel_bool = form.cleaned_data['mixpanel_bool']
+            # app.urbanairship_bool = form.cleaned_data['urbanairship_bool']
+            # app.branch_bool = form.cleaned_data['branch_bool']
+            # app.adjust_bool = form.cleaned_data['adjust_bool']
             
             print(app.appsflyer_api_key)
             print(app.appsflyer_bool)
@@ -147,6 +156,43 @@ def app_edit(request, pk):
     else:
         form = AppEditForm(instance=app)
     return render(request, 'app_edit.html', {'form': form, 'actualTokenString':actualTokenString, 'app': app})
+
+
+# def app_editv2(request, pk):
+#     app = get_object_or_404(Apps, pk=pk)
+#     apps = Apps.objects.filter(owner=request.user)
+#     token = Token.objects.filter(user=request.user)
+#     actualTokenString = list(token)[0]
+#     if request.method == "POST":
+#         dataToGiveForm={'owner': request.user }
+#         form = AppEditForm(request.POST, dataToGiveForm,instance=app)
+#         if form.is_valid():
+#             print("is_valid")
+#             # app = form.save(commit=False)
+#             app.owner = request.user
+#             app.appsflyer_api_key = form.cleaned_data['appsflyer_api_key']
+#             app.amplitude_api_key = form.cleaned_data['amplitude_api_key']
+#             app.braze_api_key = form.cleaned_data['braze_api_key']
+#             app.mixpanel_api_key = form.cleaned_data['mixpanel_api_key']
+#             app.urbanairship_api_key = form.cleaned_data['urbanairship_api_key']
+#             app.branch_api_key = form.cleaned_data['branch_api_key']
+#             app.adjust_api_key = form.cleaned_data['adjust_api_key']
+
+#             # app.appsflyer_bool = form.cleaned_data['appsflyer_bool']
+#             # app.amplitude_bool = form.cleaned_data['amplitude_bool']
+#             # app.braze_bool = form.cleaned_data['braze_bool']
+#             # app.mixpanel_bool = form.cleaned_data['mixpanel_bool']
+#             # app.urbanairship_bool = form.cleaned_data['urbanairship_bool']
+#             # app.branch_bool = form.cleaned_data['branch_bool']
+#             # app.adjust_bool = form.cleaned_data['adjust_bool']
+            
+#             print(app.appsflyer_api_key)
+#             print(app.appsflyer_bool)
+#             app.save()
+#             return redirect('app_detail', pk=app.pk)
+#     else:
+#         form = AppEditForm(instance=app)
+#     return render(request, 'app_edit.html', {'form': form, 'actualTokenString':actualTokenString, 'app': app})    
 
 @login_required(login_url='/login/')
 def configure(request, pk): 

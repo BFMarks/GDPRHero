@@ -53,13 +53,13 @@ class AppEditForm(forms.ModelForm):
     adjust_api_key = forms.CharField(max_length=100,required=False)
     branch_api_key = forms.CharField(max_length=100,required=False)
 
-    appsflyer_bool = forms.BooleanField(required=False,initial=False,label='Enable AppsFlyer GDPR Compliance')
-    amplitude_bool = forms.BooleanField(required=False,initial=False,label='Enable Amplitude GDPR Compliance')
-    braze_bool = forms.BooleanField(required=False,initial=False,label='Enable Braze GDPR Compliance')
-    mixpanel_bool = forms.BooleanField(required=False,initial=False,label='Enable AppsFlyer Mixpanel Compliance')
-    urbanairship_bool = forms.BooleanField(required=False,initial=False,label='Enable Urban Airship GDPR Compliance')
-    adjust_bool = forms.BooleanField(required=False,initial=False,label='Enable Adjust GDPR Compliance')
-    branch_bool = forms.BooleanField(required=False,initial=False,label='Enable Branch GDPR Compliance')
+    # appsflyer_bool = forms.BooleanField(required=False,initial=False,label='Enable AppsFlyer GDPR Compliance')
+    # amplitude_bool = forms.BooleanField(required=False,initial=False,label='Enable Amplitude GDPR Compliance')
+    # braze_bool = forms.BooleanField(required=False,initial=False,label='Enable Braze GDPR Compliance')
+    # mixpanel_bool = forms.BooleanField(required=False,initial=False,label='Enable AppsFlyer Mixpanel Compliance')
+    # urbanairship_bool = forms.BooleanField(required=False,initial=False,label='Enable Urban Airship GDPR Compliance')
+    # adjust_bool = forms.BooleanField(required=False,initial=False,label='Enable Adjust GDPR Compliance')
+    # branch_bool = forms.BooleanField(required=False,initial=False,label='Enable Branch GDPR Compliance')
     
     class Meta:
         model = Apps

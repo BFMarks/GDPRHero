@@ -1,0 +1,155 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<title>Blueprint: Responsive Icon Grid</title>
+		<meta name="description" content="Blueprint: Responsive Icon Grid" />
+		<meta name="keywords" content="icon grid, hover, responsive, portfolio, template" />
+		<meta name="author" content="Codrops" />
+		<link rel="shortcut icon" href="../favicon.ico">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/default.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/component.css' %}" />
+		<script src="{% static 'js/modernizr.custom.js' %}"></script>
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<link rel="stylesheet" type="text/css" href="{% static 'css/accountReal.css' %}">
+	</head>
+	<body>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-light-grey w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+
+  <div class="w3-container">
+    <h1 class="w3-jumbo"><b>GDPR Hero</b></h1>
+    <img  class="img-responsive thumbnail" src="{{ app.image_url }}" alt="">
+    <h4>{{ app.app_name }}</h4>
+    <p>App ID: {{ app.app_id }}</p>
+    <h3 class="w3-padding-64"><b>Compliant<br>Ready:</b></h3>
+  </div>
+  <div class="w3-bar-block">
+    <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">AppsFlyer √</a> 
+    <a href="#showcase" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Branch √</a> 
+    <a href="#services" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Mixpanel √</a> 
+    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a>
+  </div>
+</nav>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+  <a class="btn btn-default" style="float:right;" href="{% url 'configure' pk=app.pk %}"><span class="c"></span>+ Setup Data To Your System</a>
+
+  <!-- Header -->
+  <div class="w3-container" style="margin-top:80px" id="showcase">
+    
+    <h1 class="w3-xxxlarge w3-text-black" href="{% url 'app_edit' pk=app.pk %}"><b></b></h1>
+    <a class="btn btn-default" style="float:right;" href="{% url 'app_edit' pk=app.pk %}"><span class="c"></span>+ Integrate</a>
+    <p>Your app's HeroKey is: {{ actualTokenString }}</p>
+
+    <hr style="width:50px;border:5px solid black" class="w3-round">
+  </div>
+  
+  <!-- Photo grid (modal) -->
+<div class="container">
+			<header class="clearfix">
+				<span>Blueprint <span class="bp-icon bp-icon-about" data-content="The Blueprints are a collection of basic and minimal website concepts, components, plugins and layouts with minimal style for easy adaption and usage, or simply for inspiration."></span></span>
+				<h1>Responsive Icon Grid</h1>
+				<nav>
+					<a href="http://tympanus.net/Blueprints/ViewModeSwitch/" class="bp-icon bp-icon-prev" data-info="previous Blueprint"><span>Previous Blueprint</span></a>
+					<!--a href="" class="bp-icon bp-icon-next" data-info="next Blueprint"><span>Next Blueprint</span></a-->
+					<a href="http://tympanus.net/codrops/?p=15657" class="bp-icon bp-icon-drop" data-info="back to the Codrops article"><span>back to the Codrops article</span></a>
+					<a href="http://tympanus.net/codrops/category/blueprints/" class="bp-icon bp-icon-archive" data-info="Blueprints archive"><span>Go to the archive</span></a>
+				</nav>
+			</header>	
+
+
+			<div class="main">
+				<ul class="cbp-ig-grid">
+					<li>
+						<a href="#">
+							<img class="cbp-ig-icon cbp-ig-icon-shoe" src="{% static 'images/optimizely-default-home.svg' %}" />
+							<!-- <span class="cbp-ig-icon cbp-ig-icon-shoe"></span> -->
+							<h3 class="cbp-ig-title">Squid voluptate</h3>
+							<span class="cbp-ig-category">Fashion</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img class="cbp-ig-icon cbp-ig-icon-shoe" src="{% static 'images/mixpanel-default-home.svg' %}"/>
+							<!-- <span class="cbp-ig-icon cbp-ig-icon-ribbon"></span> -->
+							<h3 class="cbp-ig-title">Mixtape lo-fi</h3>
+							<span class="cbp-ig-category">Design</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img class="cbp-ig-icon cbp-ig-icon-shoe" src="{% static 'images/amplitude-default-home.svg' %}"/>
+							<h3 class="cbp-ig-title">Cosby sweater</h3>
+							<span class="cbp-ig-category">Lifestyle</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img class="cbp-ig-icon cbp-ig-icon-shoe" src="{% static 'images/appsflyer-default-home.svg' %}"/>
+							<h3 class="cbp-ig-title">Commodo</h3>
+							<span class="cbp-ig-category">Food</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img class="cbp-ig-icon cbp-ig-icon-shoe" src="{% static 'images/integration-tile_google-analytics-home.svg' %}"/>
+							<h3 class="cbp-ig-title">Bitters kitsch</h3>
+							<span class="cbp-ig-category">Gadgets</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img class="cbp-ig-icon cbp-ig-icon-shoe" src="{% static 'images/braze-default-home.svg' %}"/>
+							<h3 class="cbp-ig-title">Austin proident</h3>
+							<span class="cbp-ig-category">Music</span>
+						</a>
+					</li>
+										<li>
+						<a href="#">
+							<img class="cbp-ig-icon cbp-ig-icon-shoe" src="{% static 'images/integration-tile_google-analytics-home.svg' %}"/>
+							<h3 class="cbp-ig-title">Commodo</h3>
+							<span class="cbp-ig-category">Food</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img class="cbp-ig-icon cbp-ig-icon-shoe" src="{% static 'images/appsflyer-default-home.svg' %}"/>
+							<h3 class="cbp-ig-title">Bitters kitsch</h3>
+							<span class="cbp-ig-category">Gadgets</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img class="cbp-ig-icon cbp-ig-icon-shoe" src="{% static 'images/braze-default-home.svg' %}"/>
+							<h3 class="cbp-ig-title">Austin proident</h3>
+							<span class="cbp-ig-category">Music</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+    <!-- <div class="w3-half-img">
+      
+      
+    </div> -->
+  </div>
+
+
+<!-- End page content -->
+</div>
+
+
+		
+	</body>
+</html>

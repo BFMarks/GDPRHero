@@ -39,7 +39,7 @@ def home(request):
                 print("hooray! email is valid")
                 instance = InboundEmail.objects.create(inboundEmail=subject)
                 properEmail = "We will reach out to you shortly."
-                return render(request, 'home.html', {
+                return render(request, 'newHome.html', {
                     'properEmail': properEmail
                 })
     else:

@@ -3,18 +3,19 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>iLand Multipurpose Landing Page Template</title>
-<link rel="icon" href="images/favicon.png" type="image/png" sizes="16x16">
+<title>GDPR Hero</title>
+<link rel="icon" href="{% static 'favicon.png' %}" type="{% static 'css/animateNewHome.css' %}" sizes="16x16">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="iLand Multipurpose Landing Page Template">
-<meta name="keywords" content="iLand HTML Template, iLand Landing Page, Landing Page Template">
+<meta name="description" content="GDPR Hero">
+<meta name="keywords" content="GDPR Hero Compliance Mobile SDK App Regulation EU">
 <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" media="all" />
 <link href="https://fonts.googleapis.com/css?family=Open%20Sans:300,400,500,600,700" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="{% static 'css/animateNewHome.css' %}">
 <!-- Resource style -->
 <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
 <link rel="stylesheet" href="{% static 'css/owl.theme.css' %}">
-<link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}">
+<!-- <link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}"> -->
+<link href="https://unpkg.com/ionicons@4.1.2/dist/css/ionicons.min.css" rel="stylesheet">
 <!-- Resource style -->
 <link href="{% static 'css/styleNewHome.css' %}" rel="stylesheet" type="text/css" media="all" />
 </head>
@@ -26,7 +27,7 @@
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header page-scroll">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-          <a class="navbar-brand page-scroll" href="#main"><img src="{% static 'img/GDPRLogo.jpg' %}" width="80" height="30" alt="iLand" /></a> </div>
+          <a class="navbar-brand page-scroll" href="#main"><img src="{% static 'img/GDPRLogo.jpg' %}" width="80" height="30" /></a> </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
@@ -52,10 +53,12 @@
             <h1 class="wow fadeInUp" data-wow-delay="0.1s">GDPR Hero - Be a Hero</h1>
             <p class="wow fadeInUp" data-wow-delay="0.2s">GDPR Hero is the turnkey GDPR compliance solution for mobile apps that streamlines data request execution from end users to third party app services.</p>
             <div class="sub-form wow fadeInUp" data-wow-delay="0.3s">
-              <form class="subscribe-form wow zoomIn" action="php/subscribe.php" method="post" name="subscribeform" id="subscribeform">
-              <input class="mail" type="email" name="email" placeholder="Enter Email" autocomplete="off" id="subemail">
+              <form class="subscribe-form wow zoomIn" action="/" method="post"/>          
+              <input class="mail" type="email" name="inputEmailToSpeakWithExpert" placeholder="Enter Email" autocomplete="off" id="subemail">
+              {% csrf_token %}   
               <input class="submit-button" type="submit" value="Get Started" name="send" id="subsubmit">
             </form>
+            <small style="color: grey">{{ properEmail }}</small>
               <!-- subscribe message -->
         <div id="mesaj"></div>
         <!-- subscribe message --> 
@@ -85,48 +88,49 @@
           </p>
         <div class="col-md-4 features-left">
           <div class="col-md-12 wow fadeInDown" data-wow-delay="0.2s">
-            <div class="icon"> <img src="{% static 'images/branch.jpeg' %}" alt="Image" /> </div>
+            <div class="icon"> <img src="{% static 'images/appsflyer-default-home.svg' %}" alt="Image" /> </div>
             <div class="feature-single">
-              <h1>Test1</h1>
-              <p> Some lorem contetnt to fill the gap and make it look clean and organized. </p>
+              <h1>AppsFlyer</h1>
+              <p> Attribution </p>
             </div>
           </div>
           <div class="col-md-12 wow fadeInDown" data-wow-delay="0.3s">
-            <div class="icon"> <i class="ion-ios-briefcase-outline"></i> </div>
+            <div class="icon"> <img src="{% static 'images/amplitude-default-home.svg' %}" alt="Image" /> </div>
             <div class="feature-single">
-              <h1>Lorem Ipsum</h1>
-              <p> Some lorem contetnt to fill the gap and make it look clean and organized. </p>
+              <h1>Amplitude</h1>
+              <p> Analytics </p>
             </div>
           </div>
           <div class="col-md-12 wow fadeInDown" data-wow-delay="0.4s">
-            <div class="icon"> <i class="ion-ios-chatboxes-outline"></i> </div>
+            <div class="icon"> <img src="{% static 'images/braze-default-home.svg' %}" alt="Image" /> </div>
             <div class="feature-single">
-              <h1>Lorem Ipsum</h1>
-              <p> Some lorem contetnt to fill the gap and make it look clean and organized. </p>
+              <h1>Braze</h1>
+              <p> Re-Engagement </p>
             </div>
           </div>
         </div>
         <div class="col-md-4 wow fadeInDown" data-wow-delay="0.5s"> <img class="img-responsive" src="{% static 'images/iPhone-app.png' %}" alt="App" /> </div>
         <div class="col-md-4 features-left">
           <div class="col-md-12 wow fadeInDown" data-wow-delay="0.6s">
-            <div class="icon"> <i class="ion-ios-cloud-download-outline"></i> </div>
+            <div class="icon"> <img src="{% static 'images/mixpanel-default-home.svg' %}" alt="Image" /> </div>
             <div class="feature-single">
-              <h1>Lorem Ipsum</h1>
-              <p> Some lorem contetnt to fill the gap and make it look clean and organized. </p>
+              <h1>Mixpanel</h1>
+              <p> Analytics </p>
+           
             </div>
           </div>
           <div class="col-md-12 wow fadeInDown" data-wow-delay="0.7s">
-            <div class="icon"> <i class="ion-ios-copy-outline"></i> </div>
+           <div class="icon"> <img src="{% static 'images/integration-tile_google-analytics-home.svg' %}" alt="Image" /> </div>
             <div class="feature-single">
-              <h1>Lorem Ipsum</h1>
-              <p> Some lorem contetnt to fill the gap and make it look clean and organized. </p>
+              <h1>Google Analytics</h1>
+              <p> Analytics </p>
             </div>
           </div>
           <div class="col-md-12 wow fadeInDown" data-wow-delay="0.8s">
-            <div class="icon"> <i class="ion-ios-game-controller-b-outline"></i> </div>
+            <div class="icon"> <img src="{% static 'images/optimizely-default-home.svg' %}" alt="Image" /> </div>
             <div class="feature-single">
-              <h1>Lorem Ipsum</h1>
-              <p> Some lorem contetnt to fill the gap and make it look clean and organized. </p>
+              <h1>Optimizely</h1>
+              <p> A/B Testing </p>
             </div>
           </div>
         </div>
@@ -166,7 +170,7 @@
         </div>
       </div>
       <div class="col-md-6 nopadding">
-        <div class="split-image"> <img class="img-responsive wow fadeIn" src="{% static 'css/styleNewHome.css' %}" alt="Image" /> </div>
+        <div class="split-image"> <img class="img-responsive wow fadeIn" src="{% static 'images/app_image2.png' %}" alt="Image" /> </div>
       </div>
     </div>
     
@@ -180,21 +184,21 @@
         </div>
         <div class="col-md-12">
           <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s">
-            <div class="pitch-icon"> <i class="ion-ios-checkmark-outline"></i> </div>
+            <div class="pitch-icon"> <i class="icon ion-md-done-all"></i> </div>
             <div class="pitch-content">
               <h1>Reliable</h1>
               <p> Full access to your data and dependable audits to make sure every data point is safe. </p>
             </div>
           </div>
           <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s">
-            <div class="pitch-icon"> <i class="ion-ios-mic-outline"></i> </div>
+            <div class="pitch-icon"> <i class="icon ion-md-fastforward"></i> </div>
             <div class="pitch-content">
               <h1>Fastest Integration In Town</h1>
               <p> One line of copy & paste code per vendor.</p>
             </div>
           </div>
           <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s">
-            <div class="pitch-icon"> <i class="ion-ios-folder-outline"></i> </div>
+            <div class="pitch-icon"> <i class="icon ion-md-git-network"></i> </div>
             <div class="pitch-content">
               <h1>Open Source</h1>
               <p> Transparency is essentially to ensure both you and your customers' data is safe. </p>
@@ -283,12 +287,11 @@
                 <span>Over 25,000 MAU-Call Us</span>
               
                 <ul>
+                  <li>Custom solutions for your internal BI.</li>
+                  <li>Onboarding new, existing and custom vendors.</li>
                   <li>As many integrations as you need.</li>
                   <li>Postbacks the data to your own endpoint.</li>
-                  <li>As many integrations as you need.</li>
-                  <li>Postbacks the data to your own endpoint.</li>
-                  <li>Friendly and knowledgable email support.</li>
-                  <li>Friendly and knowledgable email support.</li>
+                  <li>Friendly and knowledgable phone and email support.</li>
                 </ul>
                 <button class="btn btn-primary btn-action btn-fill">Buy Now</button>
               </div>
@@ -301,18 +304,13 @@
                 <h2>Enterprise</h2>
                 <span>Custom Plan</span>
                 <ul>
+                  <li style="font-weight: bold;">Insurance so you never pay for GDPR <br> Non-Compliance.</li>
+                  <li>Director contact to Product and Engineering.</li>
+                  <li>GDPR specialist as your point of contact.</li>
+                  <li>Custom solutions for your internal BI.</li>
                   <li>As many integrations as you need.</li>
                   <li>Postbacks the data to your own endpoint.</li>
-                  <li>As many integrations as you need.</li>
-                  <li>Postbacks the data to your own endpoint.</li>
-                  <li>Friendly and knowledgable email support.</li>
-                  <li>Friendly and knowledgable email support.</li>
-                  <li>As many integrations as you need.</li>
-                  <li>Postbacks the data to your own endpoint.</li>
-                  <li>As many integrations as you need.</li>
-                  <li>Postbacks the data to your own endpoint.</li>
-                  <li>Friendly and knowledgable email support.</li>
-                  <li>Friendly and knowledgable email support.</li>
+                  <li>Friendly and knowledgable phone and email support.</li>
                 </ul>
                 <button class="btn btn-primary btn-action btn-fill">Buy Now</button>
               </div>
@@ -326,14 +324,17 @@
     <div class="cta-sub no-color">
       <div class="container">
         <div class="cta-inner">
-          <h1 class="wow fadeInUp" data-wow-delay="0s">Sign Up to Our Newsletter and get exciting offers</h1>
-          <p class="wow fadeInUp" data-wow-delay="0.2s"> Enter your email address we promise, never disclose<br class="hidden-xs">
-             or sell your email address. </p>
+          <h1 class="wow fadeInUp" data-wow-delay="0s">Speak To a Product Specialist</h1>
+          <p class="wow fadeInUp" data-wow-delay="0.2s"> Enter your email address <br class="hidden-xs"> and yes,
+             we are GDPR Compliant! </p>
           <div class="form wow fadeInUp" data-wow-delay="0.3s">
-            <form class="subscribe-form center-form wow zoomIn" action="php/subscribe.php" method="post" name="subscribeform" id="subscribeform">
-              <input class="mail" type="email" name="email" placeholder="Join the wait list" autocomplete="off" id="subemail">
-              <input class="submit-button" type="submit" value="Subscribe" name="send" id="subsubmit">
+            <form class="subscribe-form center-form wow zoomIn" action="/" method="post">
+                            {% csrf_token %}   
+              <input class="mail" type="email" name="inputEmailToSpeakWithExpert" placeholder="Enter Email" autocomplete="off" id="subemail">
+              <input class="submit-button" type="submit" value="Get Started" name="send" id="subsubmit">
+
             </form>
+            <small style="color: white">{{ properEmail }}</small>
               <!-- subscribe message -->
         <div id="mesaj"></div>
         <!-- subscribe message --> 
@@ -345,25 +346,25 @@
     <!-- Footer Section -->
     <div class="footer">
       <div class="container">
-        <div class="col-md-7"> <img src="{% static 'images/logo.png' %}" width="80" height="30" alt="Image" />
-          <p> Lorem ipsum dolor sit. Incidunt laborum beatae earum nihil odio consequatur officiis
-tempore consequuntur officia ducimus unde doloribus quod unt repell  </p>
+        <div class="col-md-7"> 
+          <!-- <img src="{% static 'images/logo.png' %}" width="80" height="30" alt="Image" /> -->
+          <p> GDPR is hard but being a hero is easy. </p>
           <div class="footer-text">
-            <p> Copyright © 2016 iLand. All Rights Reserved. Made with <i class="ion-heart"></i> by <a href="http://www.designstub.com/">Designstub</a></p>
+            <p> Copyright © 2018 GDPRHero. All Rights Reserved.</p>
           </div>
         </div>
         <div class="col-md-5">
             <h1>Contact Us</h1>
             <p> Contact our 24/7 customer support if you have any <br class="hidden-xs">
               questions. We'll help you out. </p>
-            <a href="mailto:support@gmail.com">contact@iland.com</a> </div>
+            <a href="mailto:contact@gdprhero.io">contact@gdprhero.io</a> </div>
         </div>
       </div>
     </div>
     
     <!-- Scroll To Top --> 
     
-    <a id="back-top" class="back-to-top page-scroll" href="#main"> <i class="ion-ios-arrow-thin-up"></i> </a> 
+    <a id="back-top" class="back-to-top page-scroll" href="#main"> <i class="icon ion-md-heart"></i> </a> 
     
     <!-- Scroll To Top Ends--> 
     
