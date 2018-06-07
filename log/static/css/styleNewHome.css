@@ -1082,7 +1082,7 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
 /* ----- Client Sectiion Styling ----- */
 
 .client-section {
-	background-color: #1eb858;
+	background-color: #F2F2F2;
 	padding: 5px 0 0 0;
 }
 
@@ -1976,7 +1976,7 @@ font-size: 12px;
 
 
 .product .footer .contact h1, .product .contact i, .product .footer .contact a, .product .footer-text p  {
-	color: #927f54;
+	color: #0E1729;
 	font-family:"Open Sans";
 }
 
@@ -2060,7 +2060,7 @@ font-size: 12px;
 	}
 
 	.form .hero-content {
-		padding: 100px 0 100px 0;
+		padding: 100px 0 100px 30px;
 		overflow: hidden;
 	}
 

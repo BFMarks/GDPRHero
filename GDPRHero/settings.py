@@ -109,12 +109,12 @@ RQ_EXCEPTION_HANDLERS = ['path.to.my.handler'] # If you need custom exception ha
 
 
 #FOR PRODUCTION
-CELERY_BROKER_URL=os.environ['REDIS_URL']
-CELERY_RESULT_BACKEND=os.environ['REDIS_URL']
+# CELERY_BROKER_URL=os.environ['REDIS_URL']
+# CELERY_RESULT_BACKEND=os.environ['REDIS_URL']
 
 #FOR DEVELOPMENT 
-# CELERY_BROKER_URL = 'redis://localhost:6379'
-# CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
 
 #MAINTAIN
 CELERY_ACCEPT_CONTENT = ['application/json']
