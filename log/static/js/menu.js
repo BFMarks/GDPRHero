@@ -62,10 +62,13 @@ for (var i = 1; i < 15; i++) {
   });
 }
 
+if (master){
+	alert("Hello! MASTER");
+}
 // rotateInfo
 function rotateInfo() {
   var tl = new TimelineMax();
-alert("Hello! rotateInfo");
+
   tl.add("likely");
   tl.to($(".p1"), 0.3, {
       scale: 1.3,
