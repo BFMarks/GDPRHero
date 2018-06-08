@@ -7,7 +7,7 @@ var shape = document.getElementById("svg");
 // media query event handler
 if (matchMedia) {
 	alert("Hello! I am an alert box!!");
-        var mq = window.matchMedia("(min-width: 826px)");
+        var mq = window.matchMedia("(min-width: 26px)");
         mq.addListener(WidthChange);
         WidthChange(mq);
 
