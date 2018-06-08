@@ -229,8 +229,10 @@ SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
 print("SITE_ROOT&&&&&&&&")
 # print(SITE_ROOT)
 STATICFILES_DIRS = (
-  os.path.join(SITE_ROOT, 'log/static/'),
+  # os.path.join(SITE_ROOT, 'log/static/'),
 )
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATIC_URL = '/static/'
 print(STATICFILES_DIRS)
