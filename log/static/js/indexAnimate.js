@@ -1,4 +1,3 @@
-jQuery(function($) {
 var shape = document.getElementById("svg");
 
 // media query event handler
@@ -825,5 +824,4 @@ slider.slider({
 master.eventCallback("onUpdate", function() {
   sliderValue.value = master.progress() * 100;
   slider.slider(sliderValue);
-});
 });
