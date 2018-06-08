@@ -1,8 +1,8 @@
-'use strict';
+$(document).ready(function() {
+;(function () {
+  
+  'use strict';
 
-window.addEventListener('load', windowLoaded, false);
-
-function windowLoaded() {
 var shape = document.getElementById("svg");
 
 // media query event handler
@@ -830,4 +830,6 @@ master.eventCallback("onUpdate", function() {
   sliderValue.value = master.progress() * 100;
   slider.slider(sliderValue);
 });
-}
+}());
+
+});
