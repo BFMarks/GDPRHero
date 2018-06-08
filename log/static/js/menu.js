@@ -6,8 +6,8 @@ var shape = document.getElementById("svg");
 
 // media query event handler
 if (matchMedia) {
-	alert("Hello! I am an alert box!!");
-        var mq = window.matchMedia("(min-width: 26px)");
+	
+        var mq = window.matchMedia("(min-width: 826px)");
         mq.addListener(WidthChange);
         WidthChange(mq);
 
@@ -60,7 +60,7 @@ for (var i = 1; i < 15; i++) {
 // rotateInfo
 function rotateInfo() {
   var tl = new TimelineMax();
-
+alert("Hello! I am an alert box!!");
   tl.add("likely");
   tl.to($(".p1"), 0.3, {
       scale: 1.3,
