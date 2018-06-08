@@ -6,19 +6,22 @@ var shape = document.getElementById("svg");
 
 // media query event handler
 if (matchMedia) {
-	
+
         var mq = window.matchMedia("(min-width: 826px)");
         mq.addListener(WidthChange);
         WidthChange(mq);
+        alert("Hello! matchMedia");
 
 }
 // media query change
 function WidthChange(mq) {
         if (mq.matches) {
+        	alert("Hello! if");
     shape.setAttribute("viewBox", "0 0 765 587");
     shape.setAttribute("enable-background", "0 0 765 587");
         }
         else {
+        	alert("Hello! else");
     shape.setAttribute("viewBox", "0 0 592 588");
     shape.setAttribute("enable-background", "0 0 592 588");
         }
@@ -49,6 +52,8 @@ TweenMax.set($circ, {
   y: 58
 });
 
+var master = new TimelineMax();
+master.add(rotateInfo(), "rotateInfo");
 //svgOrigin:"321.05, 323.3",
 
 for (var i = 1; i < 15; i++) {
@@ -60,7 +65,7 @@ for (var i = 1; i < 15; i++) {
 // rotateInfo
 function rotateInfo() {
   var tl = new TimelineMax();
-alert("Hello! I am an alert box!!");
+alert("Hello! rotateInfo");
   tl.add("likely");
   tl.to($(".p1"), 0.3, {
       scale: 1.3,
@@ -798,39 +803,38 @@ alert("Hello! I am an alert box!!");
   return tl;
 }
 
-var master = new TimelineMax();
-master.add(rotateInfo(), "rotateInfo");
 
-//master.seek("rotateInfo+=24");
 
-$(document).on('click', 'a.replay', function(e) {
-  master.restart();
-  e.preventDefault();
-});
+// //master.seek("rotateInfo+=24");
 
-var slider = $("#slider"),
-    sliderValue = {value:0};
+// $(document).on('click', 'a.replay', function(e) {
+//   master.restart();
+//   e.preventDefault();
+// });
 
-slider.slider({
-  range: false,
-  min: 0,
-  max: 100,
-  step:.1,
-  start:function() {
-    master.pause();
-  },
-  slide: function ( event, ui ) {
-    master.progress( ui.value / 100 );
-  },
-  stop:function() {
-    master.play();
-  }
-});
+// var slider = $("#slider"),
+//     sliderValue = {value:0};
 
-master.eventCallback("onUpdate", function() {
-  sliderValue.value = master.progress() * 100;
-  slider.slider(sliderValue);
-});
+// slider.slider({
+//   range: false,
+//   min: 0,
+//   max: 100,
+//   step:.1,
+//   start:function() {
+//     master.pause();
+//   },
+//   slide: function ( event, ui ) {
+//     master.progress( ui.value / 100 );
+//   },
+//   stop:function() {
+//     master.play();
+//   }
+// });
+
+// master.eventCallback("onUpdate", function() {
+//   sliderValue.value = master.progress() * 100;
+//   slider.slider(sliderValue);
+// });
 
 
 	var $lateral_menu_trigger = $('.nav-trigger'),
