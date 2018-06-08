@@ -6,9 +6,11 @@ var shape = document.getElementById("svg");
 
 // media query event handler
 if (matchMedia) {
+	alert("Hello! I am an alert box!!");
         var mq = window.matchMedia("(min-width: 826px)");
         mq.addListener(WidthChange);
         WidthChange(mq);
+
 }
 // media query change
 function WidthChange(mq) {
