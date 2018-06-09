@@ -106,12 +106,12 @@ p {
 
 ::-moz-selection {
     color: #FFFFFF;
-    background: #1eb858;
+    background: 85C9F7;
 }
 
 ::selection {
     color: #FFFFFF;
-    background: #1eb858;
+    background: 85C9F7;
 }
 
 .nopadding {
@@ -452,8 +452,8 @@ p {
 
 .btn-action {
  font-family: Open Sans;
- background-color: #1eb858;
- border: 1px solid #1eb858;
+ background-color: 85C9F7;
+ border: 1px solid 85C9F7;
  border-radius: 0;
  color: #FFFFFF;
  font-size: 13px;
@@ -473,9 +473,9 @@ p {
 .btn-action:active, .btn-action:active:focus {
  background: transparent;
  outline: none;
- color: #1eb858;
+ color: 85C9F7;
  background: transparent;
- border-color: #1eb858;
+ border-color: 85C9F7;
 }
 
 
@@ -590,8 +590,8 @@ font-family: Arial;
   border-radius: 0 5px 5px 0;
   margin: 0;
   padding: 0 25px 0 25px;
-	border-color: #1eb858;
-  background-color: #1eb858;
+	border-color: 85C9F7;
+  background-color: 85C9F7;
   color: #FFFFFF;
 	box-shadow: 0 0 1px transparent;
   outline: none;
@@ -609,15 +609,15 @@ font-family: Arial;
 }
 
 .form .btn-action {
-	background: #1eb858;
-	border-color: #1eb858;
+	background: 85C9F7;
+	border-color: 85C9F7;
 	color: #FFFFFF;
 }
 
 .form .btn-action:hover {
 	background: transparent;
-	border-color: #1eb858;
-	color: #1eb858;
+	border-color: 85C9F7;
+	color: 85C9F7;
 }
 
 
@@ -677,7 +677,7 @@ font-family: Arial;
 
 .signup-form {
 	padding: 25px 25px 30px 25px;
-	background: #1eb858;
+	background: 85C9F7;
 	-moz-border-radius: 0 0 4px 4px; -webkit-border-radius: 0 0 4px 4px; border-radius: 0 0 4px 4px;
 	text-align: left;
 }
@@ -714,34 +714,34 @@ font-family: Arial;
 
 
 .signup .btn-action.btn-round {
-	background: #1eb858;
-	border-color: #1eb858;
+	background: 85C9F7;
+	border-color: 85C9F7;
 	color: #FFFFFF;
 	font-size: 15px;
 	padding: 12px 24px;
 	font-weight: 600;
 	text-transform: capitalize;
-	border: 2px solid #1eb858;
+	border: 2px solid 85C9F7;
 	border-radius: 30px;
 }
 
 .signup .btn-action.btn-round:hover, .signup .btn-action.btn-round:focus {
 	background: transparent;
-	color: #1eb858;
-	border-color: #1eb858;
+	color: 85C9F7;
+	border-color: 85C9F7;
 }
 
 
 .signup .btn-action {
-	background: #1eb858;
-	border-color: #1eb858;
+	background: 85C9F7;
+	border-color: 85C9F7;
 	color: #FFFFFF;
 }
 
 .signup .btn-action:hover {
 	background: transparent;
-	border-color: #1eb858;
-	color: #1eb858;
+	border-color: 85C9F7;
+	color: 85C9F7;
 }
 
 
@@ -959,14 +959,14 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
 
 .app .btn-action {
 	color: #FFFFFF;
-	background: #1eb858;
-	border-color: #1eb858;
+	background: 85C9F7;
+	border-color: 85C9F7;
 }
 
 .app .btn-action:hover {
-	color: #1eb858;
+	color: 85C9F7;
 	background: transparent;
-	border-color: #1eb858;
+	border-color: 85C9F7;
 }
 
 
@@ -1082,7 +1082,7 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
 /* ----- Client Sectiion Styling ----- */
 
 .client-section {
-	background-color: #F2F2F2;
+	background-color: #85C9F7;
 	padding: 5px 0 0 0;
 }
 
@@ -1133,7 +1133,7 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
 
 .pitch-icon {
 	margin: 0 0 10px 0;
-	background: #1eb858;
+	background: 85C9F7;
 	width: 60px;
 	height: 60px;
 	display: inline-block;
@@ -1323,14 +1323,14 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
 
 .feature-sub .sub-inner .btn-action {
 	color: #FFFFFF;
-	background: #1eb858;
-	border-color: #1eb858;
+	background: 85C9F7;
+	border-color: 85C9F7;
 }
 
 .feature-sub .sub-inner .btn-action:hover {
-	color: #1eb858;
+	color: 85C9F7;
 	background: transparent;
-	border-color: #1eb858;
+	border-color: 85C9F7;
 }
 
 .feature-sub {
@@ -1405,7 +1405,7 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
 
 .app-features .icon i {
 	font-size: 72px;
-	color: #1eb858;
+	color: 85C9F7;
 }
 
 
@@ -1648,7 +1648,7 @@ padding: 120px 10px 50px 350px;
 .table-left .icon, .table-right .icon {
 	font-size:60px;
 	margin: 0 auto;
-	color:#1eb858;
+	color:85C9F7;
 }
 
 .table-left .pricing-details span, .table-right .pricing-details span {
@@ -1733,7 +1733,7 @@ padding: 120px 10px 50px 350px;
 
 .counter-icon i {
   font-size: 48px;
-  color: #1eb858;
+  color: 85C9F7;
 }
 
 .counter-text {
@@ -1900,7 +1900,7 @@ padding: 120px 10px 50px 350px;
 
 .contact i {
 	font-size: 42px;
-	color: #1eb858;
+	color: 85C9F7;
 	text-align: left;
 }
 
@@ -1908,7 +1908,7 @@ padding: 120px 10px 50px 350px;
 
 	font-size: 21px;
 	font-weight: 400;
-	color: #1eb858;
+	color: 85C9F7;
 	margin: 10px 0 10px 0;
 	text-align: left;
 }
@@ -1927,7 +1927,7 @@ padding: 120px 10px 50px 350px;
 
 	font-size: 18px;
 	font-weight: 400;
-	color: #1eb858;
+	color: 85C9F7;
 	text-decoration: none;
 	display: inline-block;
 }
@@ -1968,7 +1968,7 @@ padding: 120px 10px 50px 350px;
 .footer-text p {
 font-family:"Open Sans";
 font-size: 12px;
-	color: #1eb858;
+	color: 85C9F7;
 	font-weight: 400;
 	line-height: 1.4;
 	margin-top: 10px;
