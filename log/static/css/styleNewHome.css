@@ -2291,24 +2291,34 @@ padding: 120px 10px 50px 350px;
 /*---------------------------------------------------
 ------- ANIMATION ---------
 ---------------------------------------------------*/
+/*
 svg {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /*background-color: #000;*/
+  background-color: #fff;
 }
-
 .path {
-  animation: draw 14s infinite;
+  animation: draw 20s infinite;
   animation-timing-function: linear;
+}
+.path-01 {
+  animation-delay: 0s;
+} .path-02 {
+  animation-delay: 1s;
+}
+.path-03 {
+  animation-delay: 2s;
+}
+.path-04 {
+  animation-delay: 3s;
+}
+.path-05 {
+  animation-delay: 4s;
 }
 
-.path-2 {
-  animation: draw 14s infinite;
-  animation-delay: 1s;
-  animation-timing-function: linear;
-}
+
 
 @keyframes draw {
   0% {
@@ -2317,4 +2327,4 @@ svg {
     stroke-dashoffset: 0;
     stroke-opacity: 1;
   }
-}
+}*/
