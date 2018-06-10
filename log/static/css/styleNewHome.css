@@ -426,7 +426,7 @@ p {
 	height: 100%;
 	background: #FFFFFF;
 	padding: 150px 0 0 0;
-	background-image: linear-gradient(340deg,#023a6f,#FFFFFF 14%,#1b7893 35%,#21879c 45%,#FFFFFF 55%,#268ab7 93%,#1398b3);
+	/*background-image: linear-gradient(340deg,#023a6f,#FFFFFF 14%,#1b7893 35%,#21879c 45%,#FFFFFF 55%,#268ab7 93%,#1398b3);*/
 }
 
 #top,
@@ -1030,7 +1030,7 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
 }
 
 .cs-main .hero-content {
-	padding: 50px 0 0 0;
+	padding: 50px 0 -50px 0;
 }
 
 .cs-main .app-info h1 {
@@ -2289,5 +2289,32 @@ padding: 120px 10px 50px 350px;
 
 
 /*---------------------------------------------------
-------- Media Queries for Split Layout Ends ---------
+------- ANIMATION ---------
 ---------------------------------------------------*/
+svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /*background-color: #000;*/
+}
+
+.path {
+  animation: draw 14s infinite;
+  animation-timing-function: linear;
+}
+
+.path-2 {
+  animation: draw 14s infinite;
+  animation-delay: 1s;
+  animation-timing-function: linear;
+}
+
+@keyframes draw {
+  0% {
+  }
+  100% {
+    stroke-dashoffset: 0;
+    stroke-opacity: 1;
+  }
+}
