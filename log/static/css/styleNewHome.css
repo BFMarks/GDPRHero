@@ -592,7 +592,7 @@ font-family: Arial;
 .form .hero-content p {
 	font-family: Open Sans;
 	font-size: 14px;
-	color: #A1A1A1;
+	color: #222222;
 	font-weight: 400;
 	line-height: 1.5;
 	margin: 0 0 25px 0;
@@ -902,7 +902,7 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
 }
 
 .slider-pro a:hover {
-	color: #999999;
+	color: #85C9F7;
 }
 
 
@@ -2170,6 +2170,11 @@ font-size: 12px;
 		text-align: left;
 	}
 
+	.split-content2 {
+		padding: 120px 50px 50px 10px;
+		text-align: left;
+	}
+
 	.split-content h1 {
 		font-size: 37px;
 	}
@@ -2285,6 +2290,11 @@ padding: 120px 10px 50px 350px;
 		 padding: 0 0 0 0;
 	 }
 
+ }
+
+ .textanon {
+ 	text-align: center;
+vertical-align: middle;
  }
 
 

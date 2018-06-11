@@ -35,7 +35,7 @@
             <li><a class="page-scroll" href="#features">Features</a></li>
             <li><a class="page-scroll" href="#review-section">Reviews</a></li>
             <li><a class="page-scroll" href="#pricing">Pricing</a></li>
-            <li><a class="page-scroll" href="#contact">Contact</a></li>
+            <!-- <li><a class="page-scroll" href="#contact">Contact</a></li> -->
           </ul>
         </div>
       </div>
@@ -60,7 +60,7 @@
               {% csrf_token %}   
               <input class="submit-button" type="submit" value="Get Started" name="send" id="subsubmit">
             </form>
-            <small style="color: grey">{{ properEmail }}</small>
+            <small style="color: black">{{ properEmail }}</small>
               <!-- subscribe message -->
         <div id="mesaj"></div>
         <!-- subscribe message --> 
@@ -74,12 +74,12 @@
     <div class="client-section">
       <div class="container text-center">
         <div class="clients owl-carousel owl-theme">
-          <div class="single"> <img src="{% static 'images/client1.png' %}" alt="Image" /> </div>
+          <!-- <div class="single"> <img src="{% static 'images/client1.png' %}" alt="Image" /> </div>
           <div class="single"> <img src="{% static 'images/client2.png' %}" alt="Image" /> </div>
           <div class="single"> <img src="{% static 'images/client3.png' %}" alt="Image" /> </div>
           <div class="single"> <img src="{% static 'images/client1.png' %}" alt="Image" /> </div>
           <div class="single"> <img src="{% static 'images/client2.png' %}" alt="Image" /> </div>
-          <div class="single"> <img src="{% static 'images/client3.png' %}" alt="Image" /> </div>
+          <div class="single"> <img src="{% static 'images/client3.png' %}" alt="Image" /> </div> -->
         </div>
       </div>
     </div>
@@ -88,7 +88,59 @@
         <h1 class="wow fadeInDown" data-wow-delay="0.1s">The GDPR Hero Solution:</h1>
         <p class="wow fadeInDown" data-wow-delay="0.2s">GDPR Hero automates GDPR data request compliance by capturing the end user’s request and <br class="hidden-xs"> effortlessly passing it to each data partner to comply. 
           </p>
+
+          <div class="col-md-4 features-left">
+          <div class="col-md-12 wow fadeInDown" data-wow-delay="0.2s">
+            <div class="pitch-icon"> <i class="icon ion-md-cloudy"></i> </div>
+            <div class="feature-single">
+              <h1>Integrate With Your Cloud Storage</h1>
+              <!-- <p> Some lorem contetnt to fill the gap and make it look clean and organized. </p> -->
+            </div>
+          </div>
+          <div class="col-md-12 wow fadeInDown" data-wow-delay="0.3s">
+            <div class="pitch-icon"> <i class="icon ion-md-finger-print"></i> </div>
+            <div class="feature-single">
+              <h1>Anonymize Your User Data</h1>
+              <!-- <p> Some lorem contetnt to fill the gap and make it look clean and organized. </p> -->
+            </div>
+          </div>
+          <div class="col-md-12 wow fadeInDown" data-wow-delay="0.4s">
+            <div class="pitch-icon"> <i class="icon ion-md-phone-portrait"></i> </div>
+            <div class="feature-single">
+              <h1>Mobile SDK's</h1>
+              <!-- <p> Some lorem contetnt to fill the gap and make it look clean and organized. </p> -->
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 wow fadeInDown" data-wow-delay="0.5s"> <img class="img-responsive" src="{% static 'images/Insurance2.png' %}" alt="App" /> </div>
         <div class="col-md-4 features-left">
+          <div class="col-md-12 wow fadeInDown" data-wow-delay="0.6s">
+            <div class="pitch-icon"> <i class="icon ion-md-funnel"></i> </div>
+            <div class="feature-single">
+              <h1>New Vendors </h1>
+              <!-- <p> Some lorem contetnt to fill the gap and make it look clean and organized. </p> -->
+            </div>
+          </div>
+          <div class="col-md-12 wow fadeInDown" data-wow-delay="0.7s">
+            <div class="pitch-icon"> <i class="icon ion-md-lock"></i> </div>
+            <div class="feature-single">
+              <h1>Without Giving Up PII</h1>
+              <!-- <p> Some lorem contetnt to fill the gap and make it look clean and organized. </p> -->
+            </div>
+          </div>
+          <div class="col-md-12 wow fadeInDown" data-wow-delay="0.8s">
+            <div class="pitch-icon"> <i class="icon ion-md-trending-up"></i> </div>
+            <div class="feature-single">
+              <h1>Track User Opt-Out Behavior</h1>
+              <!-- <p> Some lorem contetnt to fill the gap and make it look clean and organized. </p> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+ <!-- Old section with icons -->
+  <!--       <div class="col-md-4 features-left">
           <div class="col-md-12 wow fadeInDown" data-wow-delay="0.2s">
             <div class="icon"> <img src="{% static 'images/appsflyer-default-home.svg' %}" alt="Image" /> </div>
             <div class="feature-single">
@@ -137,10 +189,10 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <div class="split-features">
       <div class="col-md-6 nopadding">
-        <div class="split-image"> <img class="img-responsive wow fadeIn" src="{% static 'images/app_image.png' %}" alt="Image" /> </div>
+        <div class="split-image"> <img class="img-responsive wow fadeIn" src="{% static 'images/Insurance2.png' %}" alt="Image" /> </div>
       </div>
       <div class="col-md-6 nopadding">
         <div class="split-content">
@@ -150,41 +202,62 @@
             <li>Possible millions of dollars in fines. </li>
             <li>Risk of passing Personal Identifiable Information to untrustworthy third party vendors.</li>
             <li>Too many integrations to manage.</li>
-            <!-- <li>Curabitur egestas justo neque viverra vel. </li> -->
           </ul>
         </div>
       </div>
     </div>
-    
-    
-     <div class="split-features2">
-      
+
+        <div class="split-features2">
       <div class="col-md-6 nopadding">
-        <div class="split-content second">
-          <h1 class="wow fadeInUp">The GDPR Hero Team is here to save the day!</h1>
-          <p class="wow fadeInUp"> GDPR Hero was built by mobile sass insiders who identified the common need for automated GDPR Compliance for app owners who rely on multiple third-party solutions to acquire, engage and retain their users, but have no easy way to manage the cumbersome requirements of GDPR.</p>
+        <div class="split-image">
+          <h1 class="wow fadeInUp">
+<link href='//fonts.googleapis.com/css?family=Dosis:400,600' rel='stylesheet' type='text/css' id="textanon">
+<svg xmlns="http://www.w3.org/2000/svg" id="logo" viewBox="0 0 3000 800" width="100%" height="100%">
+  <path fill="none" d="M50 5.2S520.6.5"/>
+</svg>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.4.1/snap.svg-min.js'></script>
+   </div>
+ </h1>
+      </div>
+      <div class="col-md-6 nopadding">
+        <div class="split-content">
+            <h1 class="wow fadeInUp">Your Customer Data Is Important - Don't Share It With Anyone</h1>
+          <p class="wow fadeInUp"> GDPR Hero was built by mobile sass insiders who identified the common need for automated privacy for app owners who rely on multiple third-party solutions to acquire, engage and retain their users, but have no easy way to manage the cumbersome requirements.</p>
           <ul class="wow fadeInUp">
             <li>Easily turn on (or off) PII information from being passed back to vendors.</li>
             <li>Ensure your system is completely free from legal blowback.</li>
             <li>Speak with a Silicon Valley experts.</li>
-            <!-- <li>Curabitur egestas justo neque viverra vel. </li> -->
           </ul>
         </div>
       </div>
+    </div>
+    
+<!--     
+     <div class="split-features2">
+      
       <div class="col-md-6 nopadding">
-        <div class="split-image">   <link href='//fonts.googleapis.com/css?family=Dosis:400,600' rel='stylesheet' type='text/css'>
-<!-- <div id="container"> -->
-<svg xmlns="http://www.w3.org/2000/svg" id="logo" viewBox="0 0 1252 600" width="250px">
-  <path fill="none" d="M531.3 11.2S520.6.5 509.5.5c-11 0-25.4 11.3-25.4 11.3L11 360s-16 12-7.4 24c8.8 12.2 25.5 1.5 25.5 1.5L499 112s6.6-4.2 10.3-4c3 .2 7.7 4 7.7 4l283 229s4 3 6 3c2.7.2 7.4-3.3 7.4-3.3l210-145.4s2.2-1.7 3.6-1.7c1 0 3.4 1.7 3.4 1.7l189.3 144.5s15.8 12.8 27.2.3c11-12-4-27-4-27l-196.7-181s-7.3-7.5-15.8-8c-8.6-.4-19.8 7.8-19.8 7.8l-196.2 122s-5.5 4-8.6 4c-2.6-.3-6.5-4-6.5-4z"/>
-</svg>
-<!-- me -->
-<!-- <div style="font-family:'Dosis'; font-weight:bold; color:#888; text-align:center;margin-top:20px">made with <span style="color:rgb(199, 59, 84)">&#9829;</span> by <a style="color:#999;text-decoration:none;border-bottom:1px dashed #555" href="http://www.alticreation.com/en" title="front end developer" target="_blank">alexis blondin</a></div> -->
-<!-- </div> -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.4.1/snap.svg-min.js'></script>
+        <div class="split-content second">
+        
+        </div>
+      </div>
 
+      <div class="col-md-6 nopadding">
+        <div class="split-content">
+
+        <div class="split-image">   <link href='//fonts.googleapis.com/css?family=Dosis:400,600' rel='stylesheet' type='text/css'>
+<svg xmlns="http://www.w3.org/2000/svg" id="logo" viewBox="0 0 1252 800" width="100%" height="100%">
+  <path fill="none" d="M531.3 11.2S520.6.5"/>
+</svg>
+
+<link href='//fonts.googleapis.com/css?family=Dosis:400,600' rel='stylesheet' type='text/css'>
+<svg xmlns="http://www.w3.org/2000/svg" id="logo" viewBox="0 0 1252 800" width="100%" height="100%">
+  <path fill="none" d="M531.3 11.2S520.6.5"/>
+</svg>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.4.1/snap.svg-min.js'></script>
+</div>
    </div>
       </div>
-    </div>
+    </div> -->
     
     
     
@@ -226,7 +299,7 @@
           <a href="#" class="btn btn-action wow fadeInUp">Speak To A Product Specialist</a> </div>
       </div>
     </div>
-    <div id="review-section" class="review-section">
+<!--     <div id="review-section" class="review-section">
       <div class="container">
         <div class="col-md-10 col-md-offset-1">
           <div class="reviews owl-carousel owl-theme">
@@ -268,13 +341,13 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <div id="pricing" class="pricing-section text-center">
       <div class="container">
         <div class="col-md-12 col-sm-12 nopadding">
           <div class="pricing-intro">
             <h1 class="wow fadeInUp" data-wow-delay="0s">Pricing Plans</h1>
-            <p class="wow fadeInUp" data-wow-delay="0.2s"> Lorem ipsum dolor sit. Incidunt laborum beatae earum nihil odio consequatur officiis <br class="hidden-xs">tempore consequuntur officia ducimus unde doloribus quod unt repell </p>
+            <p class="wow fadeInUp" data-wow-delay="0.2s"> It's cheaper than a data breach. </p>
           </div>
           <div class="col-sm-4">
             <div class="table-left wow fadeInUp" data-wow-delay="0.4s">
@@ -335,7 +408,7 @@
     <!-- Subscribe Form -->
     <div class="cta-sub no-color">
       <div class="container">  
-  
+
         <div class="cta-inner">
           <h1 class="wow fadeInUp" data-wow-delay="0s">Speak To a Product Specialist</h1>
           <p class="wow fadeInUp" data-wow-delay="0.2s"> Enter your email address <br class="hidden-xs"> and yes,
@@ -368,16 +441,15 @@
         </div>
         <div class="col-md-5">
             <h1>Contact Us</h1>
-            <p> Contact our 24/7 customer support if you have any <br class="hidden-xs">
-              questions. We'll help you out. </p>
-            <a href="mailto:contact@gdprhero.io">contact@gdprhero.io</a> </div>
+            <p> Enter your email to get started. </p>
+            <!-- <a href="mailto:contact@gdprhero.io">contact@gdprhero.io</a> </div> -->
         </div>
       </div>
     </div>
     
     <!-- Scroll To Top --> 
     
-    <a id="back-top" class="back-to-top page-scroll" href="#main"> <i class="icon ion-md-heart"></i> </a> 
+    <!-- <a id="back-top" class="back-to-top page-scroll" href="#main"> <i class="icon ion-md-heart"></i> </a>  -->
     
     <!-- Scroll To Top Ends--> 
     

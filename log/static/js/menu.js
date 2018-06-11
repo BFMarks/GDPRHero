@@ -36,6 +36,8 @@ jQuery(document).ready(function($){
 		}
 	});
 
+	
+	setInterval( function doIt() {
 		var blue = '#2980b9';
 	var l = Snap('#logo');
 	var p = l.select('path');
@@ -44,25 +46,26 @@ jQuery(document).ready(function($){
 
 	p.attr({
 		fill: blue,
-		stroke: '#0066CC',
+		stroke: '#0066CC'
 	});
 
-	setTimeout( function() {
 		// modify this one line below, and see the result !
-		var logoTitle = 'Sudo-Anonomyze your customer data';
+		var logoTitle = 'SUDO-ANONYMIZE CUSTOMER DATA';
 		var logoRandom = '';
 		var logoTitleContainer = l.text(0, '98%', '');
 		var possible = "-+*/|}{[]~\\\":;?/.><=+-_)(*&^%$#@!)}";
 		logoTitleContainer.attr({
-			fontSize: 280,
+			fontSize: 200,
 			fontFamily: 'Dosis',
-			fontWeight: '600'
+			wontWeight: '600',
+
 		});
 
 		function generateRandomTitle(i, logoRandom) {
 			setTimeout( function() {
 				logoTitleContainer.attr({ text: logoRandom });
 			}, i*70 );
+
 		}
 
 		for( var i=0; i < logoTitle.length+1; i++ ) {
@@ -72,7 +75,29 @@ jQuery(document).ready(function($){
 			}
 			generateRandomTitle(i, logoRandom);
 			logoRandom = '';
+			// alert("TEXT");
 		}
+	
 
-	}, 500 );
+
+
+	}, 5000 );
+
+
+	// 	setTimeout(function reset(){
+	// 	logoRandom = '';
+	// }, 6000);
+
+
+	// setInterval(reset(), 1000);
+    // window.setInterval(reset, 6000);
+	// window.setInterval(doIt, 6000);
+
+
+	
+
+	// setInterval(reset(), 100);
+
+	// setInterval(doIt(), 600);
+
 });
