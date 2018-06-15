@@ -50,12 +50,12 @@ jQuery(document).ready(function($){
 	});
 
 		// modify this one line below, and see the result !
-		var logoTitle = 'SUDO-ANONYMIZE CUSTOMER DATA';
+		var logoTitle = 'ANONYMOUS CUSTOMER DATA';
 		var logoRandom = '';
 		var logoTitleContainer = l.text(0, '98%', '');
 		var possible = "-+*/|}{[]~\\\":;?/.><=+-_)(*&^%$#@!)}";
 		logoTitleContainer.attr({
-			fontSize: 200,
+			fontSize: 250,
 			fontFamily: 'Dosis',
 			wontWeight: '600',
 
@@ -81,7 +81,7 @@ jQuery(document).ready(function($){
 
 
 
-	}, 5000 );
+	}, 4000 );
 
 
 	// 	setTimeout(function reset(){

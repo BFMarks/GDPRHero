@@ -13,8 +13,8 @@ urlpatterns = [
     # url(r'^', include('snippets.urls')),
     # url(r'^', include('log.urls')),
 
-    url(r'^$', views.home,name='home'),
-    url(r'^newHome/$', views.newHome,name='newHome'),
+    url(r'^$', views.newHome,name='newHome'),
+    # url(r'^newHome/$', views.newHome,name='newHome'),
     # url(r'^home/$', views.home, {'template_name': 'home.html'},name = 'home_logged_in'),    
     url(r'^login/$', views.loginView,  name='login'),
     

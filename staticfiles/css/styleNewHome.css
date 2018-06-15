@@ -539,7 +539,13 @@ font-family: Arial;
 	margin: 0 auto;
 }
 
-
+.img-responsiveSolution {
+    width: 10%;
+    height: auto;
+      position: absolute;
+    left: -100px;
+    top: -150px;
+}
 
 /*---------------- Form Home Styling ------------------- */
 
