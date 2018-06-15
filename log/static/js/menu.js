@@ -50,7 +50,7 @@ jQuery(document).ready(function($){
 	});
 
 		// modify this one line below, and see the result !
-		var logoTitle = 'ANONYMOUS CUSTOMER DATA';
+		var logoTitle = 'ANONYMIZE CUSTOMER DATA';
 		var logoRandom = '';
 		var logoTitleContainer = l.text(0, '98%', '');
 		var possible = "-+*/|}{[]~\\\":;?/.><=+-_)(*&^%$#@!)}";
