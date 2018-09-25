@@ -204,7 +204,7 @@ AUTH_PASSWORD_VALIDATORS = [
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'bryan@gdprhero.io'
 EMAIL_USE_TLS = True
-EMAIL_HOST_PASSWORD = 'loveTech4$'
+EMAIL_HOST_PASSWORD = ''
 EMAIL_PORT = 587
 # EMAIL_BACKEND = 'post_office.EmailBackend'
 
